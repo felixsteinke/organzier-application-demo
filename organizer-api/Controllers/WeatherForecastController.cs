@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
+using organizer_api.Models;
 
 namespace organizer_api.Controllers
 {

@@ -1,4 +1,4 @@
-namespace organizer_api
+namespace organizer_api.Models
 {
     public class WeatherForecast
     {
