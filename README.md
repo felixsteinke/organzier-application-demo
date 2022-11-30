@@ -10,3 +10,5 @@ ASP.NET API as backend of the application.
 
 * [.NET 7 SDK](https://dotnet.microsoft.com/en-us/download/dotnet/thank-you/sdk-7.0.100-windows-x64-installer)
 * [Visual Studio 2022](https://visualstudio.microsoft.com/de/downloads/)
+	* [NuGet Source Configuration](https://learn.microsoft.com/en-us/azure/devops/artifacts/nuget/upstream-sources?view=azure-devops#add-nuget-gallery-upstream-source)
+* [PostgresDB](https://www.enterprisedb.com/downloads/postgres-postgresql-downloads)
