@@ -9,7 +9,7 @@
     {
         public void execute()
         {
-            using var db = new BloggingContext();
+            using var db = new DatabaseRepository();
 
             // Create
             Console.WriteLine("Inserting a new blog");

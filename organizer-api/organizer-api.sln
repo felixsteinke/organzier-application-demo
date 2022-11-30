@@ -5,7 +5,9 @@ VisualStudioVersion = 17.4.33110.190
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "organizer-api", "organizer-api.csproj", "{AF84D944-49F0-4140-AF84-89EC5FC1C1C3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "organizer-api-test", "..\organizer-api-test\organizer-api-test.csproj", "{BBB9C9BE-DFEA-45BA-87B3-5595EDA18D31}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "organizer-api-test", "..\organizer-api-test\organizer-api-test.csproj", "{BBB9C9BE-DFEA-45BA-87B3-5595EDA18D31}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "e2e-test", "..\e2e-test\e2e-test.csproj", "{ECE28C2E-EA48-4797-A32A-AA80AE52CAC2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{BBB9C9BE-DFEA-45BA-87B3-5595EDA18D31}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BBB9C9BE-DFEA-45BA-87B3-5595EDA18D31}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BBB9C9BE-DFEA-45BA-87B3-5595EDA18D31}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ECE28C2E-EA48-4797-A32A-AA80AE52CAC2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ECE28C2E-EA48-4797-A32A-AA80AE52CAC2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ECE28C2E-EA48-4797-A32A-AA80AE52CAC2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ECE28C2E-EA48-4797-A32A-AA80AE52CAC2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

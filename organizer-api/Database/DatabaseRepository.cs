@@ -2,7 +2,7 @@
 
 namespace organizer_api.Database
 {
-    public class BloggingContext : DbContext
+    public class DatabaseRepository : DbContext
     {
         public DbSet<Blog> Blogs { get; set; }
         public DbSet<Post> Posts { get; set; }

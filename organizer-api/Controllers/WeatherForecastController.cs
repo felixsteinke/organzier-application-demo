@@ -19,9 +19,10 @@ namespace organizer_api.Controllers
             _logger = logger;
         }
 
-        [HttpGet(Name = "GetWeatherForecast")]
-        public IEnumerable<WeatherForecast> Get()
+        [HttpGet("forecast")]
+        public IEnumerable<WeatherForecast> GetForecast()
         {
+            _logger.LogInformation("Requesting Weather Forcast.");
             return Enumerable.Range(1, 5).Select(index => new WeatherForecast
             {
                 Date = DateOnly.FromDateTime(DateTime.Now.AddDays(index)),
@@ -29,6 +30,18 @@ namespace organizer_api.Controllers
                 Summary = Summaries[Random.Shared.Next(Summaries.Length)]
             })
             .ToArray();
+        }
+
+        [HttpGet("current")]
+        public ActionResult<WeatherForecast> GetCurrent()
+        {
+            _logger.LogInformation("Requesting current Weather.");
+            return Ok(new WeatherForecast
+            {
+                Date = DateOnly.FromDateTime(DateTime.Now),
+                TemperatureC = 20,
+                Summary = Summaries[5]
+            });
         }
     }
 }
