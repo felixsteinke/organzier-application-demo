@@ -4,7 +4,7 @@ using organizer_api.Models;
 namespace organizer_api.Controllers
 {
     [ApiController]
-    [Route("[controller]")]
+    [Route("/api/weather")]
     public class WeatherForecastController : ControllerBase
     {
         private static readonly string[] Summaries = new[]

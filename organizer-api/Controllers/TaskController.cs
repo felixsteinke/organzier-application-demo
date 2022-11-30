@@ -4,7 +4,7 @@ using organizer_api.Database;
 namespace organizer_api.Controllers
 {
     [ApiController]
-    [Route("/task")]
+    [Route("/api/task")]
     public class TaskController : ControllerBase
     {
 
