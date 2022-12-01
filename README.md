@@ -19,6 +19,13 @@ ASP.NET API as backend of the application.
 docker run --name postgres-db -p 5432:5432 -e POSTGRES_DB=organizer_db -e POSTGRES_PASSWORD=password -d postgres:15.1-alpine
 ```
 
+__Migration Management within Package Manager Console:__
+
+```shell
+Add-Migration DatabaseMigration
+Update-Database
+```
+
 ## Tutorials
 
 * [General Web App Testing](https://learn.microsoft.com/en-us/dotnet/architecture/microservices/multi-container-microservice-net-applications/test-aspnet-core-services-web-apps)

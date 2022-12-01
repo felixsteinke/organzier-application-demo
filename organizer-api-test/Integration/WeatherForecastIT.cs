@@ -1,4 +1,4 @@
-﻿using organizer_api.Models;
+﻿using organizer_api.Controllers.Models;
 using System.Net.Http.Json;
 
 namespace organizer_api_test.Integration

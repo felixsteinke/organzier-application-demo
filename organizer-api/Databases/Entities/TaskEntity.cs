@@ -1,7 +1,10 @@
-﻿namespace organizer_api.Models
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace organizer_api.Database.Entities
 {
-    public class Organizer
+    public class TaskEntity
     {
+        [Key]
         public int Id { get; set; }
         public string? Titel { get; set; }
         public long? EntryDate { get; set; }

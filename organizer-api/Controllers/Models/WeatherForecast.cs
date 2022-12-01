@@ -1,4 +1,4 @@
-namespace organizer_api.Models
+namespace organizer_api.Controllers.Models
 {
     public class WeatherForecast
     {

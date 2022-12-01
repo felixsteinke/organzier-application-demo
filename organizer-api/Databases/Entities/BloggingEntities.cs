@@ -1,23 +1,26 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
+using System.ComponentModel.DataAnnotations;
 
-namespace organizer_api.Database
+namespace organizer_api.Database.Entities
 {
-    public class Blog
+    public class BlogEntity
     {
+        [Key]
         public int BlogId { get; set; }
         public string? Url { get; set; }
 
-        public List<Post> Posts { get; } = new();
+        public List<PostEntity> Posts { get; } = new();
     }
 
-    public class Post
+    public class PostEntity
     {
+        [Key]
         public int PostId { get; set; }
         public string? Title { get; set; }
         public string? Content { get; set; }
 
         public int BlogId { get; set; }
-        public Blog? Blog { get; set; }
+        public BlogEntity? Blog { get; set; }
     }
 }
