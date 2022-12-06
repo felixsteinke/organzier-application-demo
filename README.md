@@ -1,3 +1,5 @@
+[![build and test](https://github.com/felixsteinke/organzier-application-demo/actions/workflows/build_and_test.yml/badge.svg)](https://github.com/felixsteinke/organzier-application-demo/actions/workflows/build_and_test.yml)
+
 # Organizer Application
 
 Application for the lecture System Design.
