@@ -15,7 +15,11 @@ namespace organizer_api.Database
 
     public class DatabaseService : IDatabaseService
     {
-        private readonly DatabaseRepository db = new();
+        private readonly DatabaseRepository _db;
+
+        public DatabaseService(DatabaseRepository db) {
+            this._db = db;
+        }
 
         public TaskEntity InsertTask(
             string title, 
@@ -35,20 +39,20 @@ namespace organizer_api.Database
                 Done = false,
                 Description = description
             };
-            db.Add(entity);
-            db.SaveChanges();
+            _db.Add(entity);
+            _db.SaveChanges();
             return entity;
         }
 
         public IEnumerable<TaskEntity> SelectAllTasks()
         {
-            return db.Tasks
+            return _db.Tasks
                 .OrderBy(task => task.Id);
         }
 
         public TaskEntity SelectTask(int id)
         {
-            return db.Tasks
+            return _db.Tasks
                 .Where(predicate: task => task.Id == id)
                 .FirstOrDefault();
         }
@@ -56,8 +60,8 @@ namespace organizer_api.Database
         public TaskEntity DeleteTask(int id)
         {
             var entity = SelectTask(id);
-            db.Remove(entity);
-            db.SaveChanges();
+            _db.Remove(entity);
+            _db.SaveChanges();
             return entity;
         }
     }

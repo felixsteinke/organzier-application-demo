@@ -7,9 +7,6 @@ namespace organizer_api.Database
     {
         public virtual DbSet<TaskEntity> Tasks { get; set; }
 
-        // The following configures EF to create a Sqlite database file in the
-        // special "local" folder for your platform.
-        protected override void OnConfiguring(DbContextOptionsBuilder options)
-            => options.UseNpgsql("Host=localhost:5432;Database=organizer_db;Username=postgres;Password=password");
+        public DatabaseRepository(DbContextOptions<DatabaseRepository> options) : base(options) { }
     }
 }

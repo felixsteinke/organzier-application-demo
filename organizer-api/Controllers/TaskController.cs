@@ -34,7 +34,7 @@ namespace organizer_api.Controllers
                 model.Estimate,
                 model.Priority,
                 model.DueDate,
-                model.Description)));
+                model?.Description)));
         }
 
         [HttpPost("generate")]

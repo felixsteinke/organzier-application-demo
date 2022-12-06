@@ -1,3 +1,5 @@
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection.Extensions;
 using organizer_api.Database;
 
 namespace organizer_api
@@ -15,7 +17,10 @@ namespace organizer_api
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
 
-            builder.Services.AddSingleton<IDatabaseService, DatabaseService>();
+            // Setup database connection
+            builder.Services.AddDbContext<DatabaseRepository>(opt => opt.UseNpgsql(builder.Configuration.GetConnectionString("PostgresDB")));
+
+            builder.Services.AddScoped<IDatabaseService, DatabaseService>();
 
             var app = builder.Build();
 
