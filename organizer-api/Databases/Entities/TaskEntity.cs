@@ -3,6 +3,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace organizer_api.Database.Entities
 {
+    [Table("Tasks")]
     public class TaskEntity
     {
         [Key]

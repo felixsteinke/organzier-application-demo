@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection.Extensions;
+using Microsoft.Extensions.Hosting;
 using organizer_api.Database;
 
 namespace organizer_api
@@ -10,16 +11,14 @@ namespace organizer_api
         {
             var builder = WebApplication.CreateBuilder(args);
 
-            // Add services to the container.
-
+            // Add rest controllers to dependeny injection
             builder.Services.AddControllers();
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
-
             // Setup database connection
             builder.Services.AddDbContext<DatabaseRepository>(opt => opt.UseNpgsql(builder.Configuration.GetConnectionString("PostgresDB")));
-
+            // Setup service dependency injection
             builder.Services.AddScoped<IDatabaseService, DatabaseService>();
 
             var app = builder.Build();
@@ -32,10 +31,15 @@ namespace organizer_api
             }
 
             app.UseHttpsRedirection();
-
             app.UseAuthorization();
-
             app.MapControllers();
+
+            // Apply database migration
+            using (var scope = app.Services.CreateScope())
+            {
+                var db = scope.ServiceProvider.GetRequiredService<DatabaseRepository>();
+                db.Database.Migrate();
+            }
 
             app.Run();
         }

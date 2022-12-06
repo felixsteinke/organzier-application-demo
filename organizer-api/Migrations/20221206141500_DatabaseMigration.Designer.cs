@@ -11,7 +11,7 @@ using organizer_api.Database;
 namespace organizerapi.Migrations
 {
     [DbContext(typeof(DatabaseRepository))]
-    [Migration("20221206090932_DatabaseMigration")]
+    [Migration("20221206141500_DatabaseMigration")]
     partial class DatabaseMigration
     {
         /// <inheritdoc />
