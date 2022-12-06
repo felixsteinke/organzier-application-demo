@@ -2,7 +2,7 @@
 using organizer_api.Database.Entities;
 using organizer_api.Enums;
 
-namespace organizer_api.DomainMapping
+namespace organizer_api.Databases.Mapper
 {
     public class TaskMapper : DomainMapper<TaskModel, TaskEntity>
     {

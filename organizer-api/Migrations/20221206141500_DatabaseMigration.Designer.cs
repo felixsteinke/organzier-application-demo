@@ -10,7 +10,7 @@ using organizer_api.Database;
 
 namespace organizerapi.Migrations
 {
-    [DbContext(typeof(DatabaseRepository))]
+    [DbContext(typeof(TaskRepository))]
     [Migration("20221206141500_DatabaseMigration")]
     partial class DatabaseMigration
     {

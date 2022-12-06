@@ -1,6 +1,6 @@
-﻿namespace organizer_api.DomainMapping
+﻿namespace organizer_api.Databases.Mapper
 {
-    public abstract class DomainMapper<D,E>
+    public abstract class DomainMapper<D, E>
     {
         public abstract D ToDomain(E entity);
         public abstract E ToEntity(D domain);

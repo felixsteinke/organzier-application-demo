@@ -1,10 +1,10 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using organizer_api.Controllers.Models;
-using organizer_api.Database;
 using organizer_api.Database.Entities;
-using organizer_api.DomainMapping;
+using organizer_api.Databases.Mapper;
 using organizer_api.Enums;
+using organizer_api.Services;
 using System;
 
 namespace organizer_api.Controllers
@@ -34,7 +34,7 @@ namespace organizer_api.Controllers
                 model.Estimate,
                 model.Priority,
                 model.DueDate,
-                model?.Description)));
+                model.Description)));
         }
 
         [HttpPost("generate")]

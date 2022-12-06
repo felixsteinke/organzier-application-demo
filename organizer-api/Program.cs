@@ -2,6 +2,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 using Microsoft.Extensions.Hosting;
 using organizer_api.Database;
+using organizer_api.Services;
 
 namespace organizer_api
 {
@@ -17,7 +18,7 @@ namespace organizer_api
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
             // Setup database connection
-            builder.Services.AddDbContext<DatabaseRepository>(opt => opt.UseNpgsql(builder.Configuration.GetConnectionString("PostgresDB")));
+            builder.Services.AddDbContext<TaskRepository>(opt => opt.UseNpgsql(builder.Configuration.GetConnectionString("PostgresDB")));
             // Setup service dependency injection
             builder.Services.AddScoped<IDatabaseService, DatabaseService>();
 
@@ -37,7 +38,7 @@ namespace organizer_api
             // Apply database migration
             using (var scope = app.Services.CreateScope())
             {
-                var db = scope.ServiceProvider.GetRequiredService<DatabaseRepository>();
+                var db = scope.ServiceProvider.GetRequiredService<TaskRepository>();
                 db.Database.Migrate();
             }
 

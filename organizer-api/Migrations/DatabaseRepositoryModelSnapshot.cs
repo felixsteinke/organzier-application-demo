@@ -9,7 +9,7 @@ using organizer_api.Database;
 
 namespace organizerapi.Migrations
 {
-    [DbContext(typeof(DatabaseRepository))]
+    [DbContext(typeof(TaskRepository))]
     partial class DatabaseRepositoryModelSnapshot : ModelSnapshot
     {
         protected override void BuildModel(ModelBuilder modelBuilder)
