@@ -28,7 +28,7 @@ jobs:
         dotnet-version: ${{ env.DOTNET_VERSION }}
         
     - name: wo bin ich eigentlich
-      run: echo pwd
+      run: echo "$(pwd)"
 
     - name: Install dependencies
       run: dotnet restore
