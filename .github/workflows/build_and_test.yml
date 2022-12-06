@@ -27,8 +27,8 @@ jobs:
       with:
         dotnet-version: ${{ env.DOTNET_VERSION }}
         
-    - name: wo bin ich eigentlich
-      run: echo "$(pwd)" && echo "$(ls -al)"
+    - name: cd
+      run: cd organizer-api/ && echo "$(pwd)" && echo "$(ls -al)"
 
     - name: Install dependencies
       run: dotnet restore
