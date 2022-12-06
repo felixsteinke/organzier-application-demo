@@ -1,0 +1,10 @@
+﻿{
+  Id: 1,
+  Titel: Testing Domain Task,
+  EntryDate: Guid_1,
+  Estimate: 5.0,
+  Priority: 2,
+  DueDate: Guid_2,
+  Done: true,
+  Description: Testing Domain Task Description
+}

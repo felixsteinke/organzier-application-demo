@@ -4,12 +4,12 @@ using System.Net.Http.Json;
 namespace organizer_api_test.Integration
 {
     [UsesVerify]
-    public class WeatherForecastIT
+    public class WeatherForecastControllerIT
     {
         private readonly OrganizerWebApplication _server;
         private readonly HttpClient _client;
 
-        public WeatherForecastIT()
+        public WeatherForecastControllerIT()
         {
             // Arrange
             _server = new OrganizerWebApplication();
