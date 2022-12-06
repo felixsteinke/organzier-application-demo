@@ -5,8 +5,6 @@ namespace organizer_api.Database
 {
     public class DatabaseRepository : DbContext
     {
-        public virtual DbSet<BlogEntity> Blogs { get; set; }
-        public virtual DbSet<PostEntity> Posts { get; set; }
         public virtual DbSet<TaskEntity> Tasks { get; set; }
 
         // The following configures EF to create a Sqlite database file in the
