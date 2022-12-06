@@ -29,9 +29,12 @@ jobs:
 
     - name: Install dependencies
       run: dotnet restore
+      working-directory: src/organizer-api/
       
     - name: Build
       run: dotnet build --configuration Release --no-restore
+      working-directory: src/organizer-api/
     
     - name: Test
       run: dotnet test --no-restore --verbosity normal
+      working-directory: src/organizer-api/
