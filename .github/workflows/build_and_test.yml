@@ -36,5 +36,5 @@ jobs:
       working-directory: organizer-api/
     
     - name: Test
-      run: dotnet test --no-restore --verbosity normal
+      run: dotnet test ../organizer-api-test --no-restore --verbosity normal
       working-directory: organizer-api/
