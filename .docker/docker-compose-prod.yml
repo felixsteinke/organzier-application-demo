@@ -12,7 +12,7 @@ services:
          - postgres:/var/lib/postgres
 
    organizer-service:
-      image: 
+      image: ghcr.io/felixsteinke/organzier-application-demo:latest
       environment: 
          - ConnectionStrings:PostgresDB=Host=postgres-service:5432;Database=organizer_db;Username=postgres;Password=password
       expose:
