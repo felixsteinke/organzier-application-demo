@@ -12,12 +12,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: wo bin ich 
-        run: echo "$(ls -l)"
+        run: echo "$(ls -l)" && echo "$(pwd)" && echo "$(cd ..)" && echo "$(ls -l)"
 
       - name: use this action, test solution dir
         uses: zyborg/dotnet-tests-report@v1
         with:
-          project_path: ./organizer-api/organizer-api.sln
+          project_path: /home/runner/work/organzier-application-demo/organzier-application-demo//organizer-api/organizer-api.sln
           report_name: my_project_tests
           report_title: My Project Tests
           set_check_status_from_test_outcome: true
