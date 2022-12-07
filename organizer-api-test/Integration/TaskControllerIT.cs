@@ -11,18 +11,14 @@ namespace organizer_api_test.Integration
     [UsesVerify]
     public class TaskControllerIT : IAsyncLifetime
     {
-        private readonly PostgresDB _database;
-        private  OrganizerWebApplication _server;
+        private PostgresDB _database;
+        private OrganizerWebApplication _server;
         private HttpClient _client;
-
-        public TaskControllerIT() {
-            // Arrange
-            _database = new PostgresDB();
-        }
 
         public async Task InitializeAsync()
         {
             // Arrange
+            this._database = new PostgresDB();
             await _database.InitializeAsync();
             this._server = new OrganizerWebApplication(_database.CONTAINER.ConnectionString);
             this._client = _server.CreateClient();
@@ -31,7 +27,7 @@ namespace organizer_api_test.Integration
         [Fact]
         public async void PostTask()
         {
-            //Act
+            // Act
             var response = await _client.PostAsJsonAsync("/api/task", new TaskModel
             {
                 Id = 1,
@@ -45,7 +41,7 @@ namespace organizer_api_test.Integration
             });
             response.EnsureSuccessStatusCode();
             var responseBody = await response.Content.ReadFromJsonAsync<TaskModel>();
-            //Assert
+            // Assert
             var verifySettings = new VerifySettings();
             verifySettings.ScrubLinesContaining("Id:", "id:");
             await Verify(settings: verifySettings, target: responseBody);

@@ -1,18 +1,10 @@
-﻿using organizer_api.Controllers.Models;
-using organizer_api.Enums;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Microsoft.EntityFrameworkCore;
 using Moq;
-using organizer_api.Database.Entities;
-using Microsoft.EntityFrameworkCore;
-using System.Reflection.Metadata;
-using organizer_api.Database;
-using System.Net.Sockets;
-using organizer_api.Services;
 using Newtonsoft.Json;
+using organizer_api.Database;
+using organizer_api.Database.Entities;
+using organizer_api.Enums;
+using organizer_api.Services;
 
 namespace organizer_api_test.Unit.Services
 {
@@ -26,7 +18,8 @@ namespace organizer_api_test.Unit.Services
         private readonly TaskEntity dataSample1;
         private readonly TaskEntity dataSample2;
 
-        public DatabaseServiceTest() {
+        public DatabaseServiceTest()
+        {
             // Arrange Data
             dataSample1 = new TaskEntity
             {
@@ -50,7 +43,7 @@ namespace organizer_api_test.Unit.Services
                 Done = true,
                 Description = "Testing Entity Task 2 Description"
             };
-            var data = new List<TaskEntity> { dataSample1, dataSample2}.AsQueryable();
+            var data = new List<TaskEntity> { dataSample1, dataSample2 }.AsQueryable();
             // Arrange DbSet
             mockTaskDbSet = new Mock<DbSet<TaskEntity>>();
             mockTaskDbSet.As<IQueryable<TaskEntity>>()
@@ -71,29 +64,33 @@ namespace organizer_api_test.Unit.Services
         [Fact]
         public void SelectTask()
         {
+            // Act
             var entity = service.SelectTask(1);
+            // Assert
             Assert.Equal(JsonConvert.SerializeObject(dataSample1), JsonConvert.SerializeObject(entity));
         }
 
         [Fact]
         public void SelectTaskInvalid()
         {
+            // Act
             var entity = service.SelectTask(999);
+            // Assert
             Assert.Null(entity);
         }
 
         [Fact]
         public void InsertTask()
         {
-
+            // Arrange
             var title = "Testing Entity Task 3";
             var estimate = 7.5;
             var priority = Priority.LOW;
             var dueDate = DateTime.Now;
             var description = "Testing Entity Task 3 Description";
-
+            // Act
             var entity = service.InsertTask(title, estimate, priority, dueDate, description);
-
+            // Assert
             Assert.Equal(title, entity.Titel);
             Assert.Equal(estimate, entity.Estimate);
             Assert.Equal((int)priority, entity.Priority);
@@ -105,8 +102,9 @@ namespace organizer_api_test.Unit.Services
         [Fact]
         public void UpdateTask()
         {
-
+            // Act
             var entity = service.UpdateTask(dataSample1.Id, true);
+            // Assert
             Assert.True(entity.Done);
             dataSample1.Done = true;
         }
@@ -114,14 +112,18 @@ namespace organizer_api_test.Unit.Services
         [Fact]
         public void SelectAllTasks()
         {
+            // Act
             var entityList = service.SelectAllTasks();
+            // Assert
             Assert.NotNull(entityList.Where(e => e.Id == 1).FirstOrDefault());
         }
 
         [Fact]
         public void DeleteTask()
         {
+            // Act
             var entity = service.DeleteTask(2);
+            // Assert
             Assert.Equal(JsonConvert.SerializeObject(dataSample2), JsonConvert.SerializeObject(entity));
         }
     }

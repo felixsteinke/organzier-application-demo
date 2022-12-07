@@ -16,30 +16,24 @@ namespace organizer_api_test
     {
         private string? _testConnectionString = null;
 
-        public OrganizerWebApplication() { }
-
         public OrganizerWebApplication(string connectionString)
         {
             _testConnectionString = connectionString;
         }
 
-
         protected override void ConfigureWebHost(IWebHostBuilder builder)
         {
-            if (this._testConnectionString != null)
+            builder.ConfigureServices(services =>
             {
-                builder.ConfigureServices(services =>
+                // remove the existing context configuration
+                var descriptor = services.SingleOrDefault(d => d.ServiceType == typeof(DbContextOptions<TaskRepository>));
+                if (descriptor != null)
                 {
-                    // remove the existing context configuration
-                    var descriptor = services.SingleOrDefault(d => d.ServiceType == typeof(DbContextOptions<TaskRepository>));
-                    if (descriptor != null)
-                    {
-                        services.Remove(descriptor);
-                    }
-                    // replace it with a new context configuration
-                    services.AddDbContext<TaskRepository>(opt => opt.UseNpgsql(_testConnectionString));
-                });
-            }
+                    services.Remove(descriptor);
+                }
+                // replace it with a new context configuration
+                services.AddDbContext<TaskRepository>(opt => opt.UseNpgsql(_testConnectionString));
+            });
             builder.UseEnvironment("Development");
         }
 

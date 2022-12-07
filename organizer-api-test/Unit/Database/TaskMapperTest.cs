@@ -30,9 +30,9 @@ namespace organizer_api_test.Unit.Database
                 Done = true,
                 Description = "Testing Domain Task Description"
             };
-            //Act
+            // Act
             var taskEntity = _taskMapper.ToEntity(taskModel);
-            //Assert
+            // Assert
             return Verify(taskEntity);
         }
 
@@ -51,9 +51,9 @@ namespace organizer_api_test.Unit.Database
                 Done = true,
                 Description = "Testing Entity Task Description"
             };
-            //Act
+            // Act
             var taskModel = _taskMapper.ToDomain(taskEntity);
-            //Assert
+            // Assert
             return Verify(taskModel);
         }
 
@@ -72,10 +72,10 @@ namespace organizer_api_test.Unit.Database
                 Done = true,
                 Description = "Testing Domain Task Description"
             };
-            //Act
+            // Act
             var taskEntity = _taskMapper.ToEntity(taskModel1);
             var taskModel2 = _taskMapper.ToDomain(taskEntity);
-            //Assert
+            // Assert
             Assert.Equal(taskModel1.Id, taskModel2.Id);
             Assert.Equal(taskModel1.Titel, taskModel2.Titel);
             Assert.Equal(taskModel1.EntryDate, taskModel2.EntryDate);
