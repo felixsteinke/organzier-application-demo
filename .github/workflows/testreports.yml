@@ -17,7 +17,8 @@ jobs:
       - name: use this action, test solution dir
         uses: zyborg/dotnet-tests-report@v1
         with:
-          project_path: ./organizer-api-test/organizer-api-test.csproj
+          project_path: ./organizer-api
           report_name: my_project_tests
           report_title: My Project Tests
+          set_check_status_from_test_outcome: true
           github_token: ${{ secrets.GITHUB_TOKEN }}
