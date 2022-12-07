@@ -7,10 +7,28 @@ on:
     - '**.cs'
     - '**.csproj'
 
+env:
+  DOTNET_VERSION: '7.0.x' # The .NET SDK version to use
+
 jobs:
   test:
     runs-on: ubuntu-latest
     steps:
+
+      - uses: actions/checkout@v3
+      - name: Setup .NET Core
+        uses: actions/setup-dotnet@v3
+        with:
+          dotnet-version: ${{ env.DOTNET_VERSION }}
+
+      - name: Install dependencies
+        run: dotnet restore
+        working-directory: organizer-api/
+      
+      - name: Build
+        run: dotnet build --configuration Release --no-restore
+        working-directory: organizer-api/
+
       - name: wo bin ich 
         run: echo "$(ls -l)" && echo "$(pwd)" && echo "$(cd ..)" && echo "$(ls -l)"
 
