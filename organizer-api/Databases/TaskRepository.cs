@@ -8,5 +8,7 @@ namespace organizer_api.Database
         public virtual DbSet<TaskEntity> Tasks { get; set; }
 
         public TaskRepository(DbContextOptions<TaskRepository> options) : base(options) { }
+
+        public TaskRepository() { }
     }
 }

@@ -8,8 +8,9 @@ namespace organizer_api.Services
     {
         TaskEntity InsertTask(string title, double estimate, Priority priority, DateTime dueDate, string description);
         IEnumerable<TaskEntity> SelectAllTasks();
-        TaskEntity SelectTask(int id);
-        TaskEntity DeleteTask(int id);
+        TaskEntity UpdateTask(long id, bool done);
+        TaskEntity SelectTask(long id);
+        TaskEntity DeleteTask(long id);
     }
 
     public class DatabaseService : IDatabaseService
@@ -21,7 +22,7 @@ namespace organizer_api.Services
             _db = db;
         }
 
-        public TaskEntity SelectTask(int id) => _db.Tasks.Where(predicate: task => task.Id == id).FirstOrDefault();
+        public TaskEntity SelectTask(long id) => _db.Tasks.Where(predicate: task => task.Id == id).FirstOrDefault();
 
         public IEnumerable<TaskEntity> SelectAllTasks() => _db.Tasks.OrderBy(task => task.Id);
 
@@ -44,21 +45,16 @@ namespace organizer_api.Services
             return entity;
         }
 
-        public TaskEntity UpdateTask(int id, string title, double estimate, Priority priority, DateTime dueDate, string description, bool done)
+        public TaskEntity UpdateTask(long id, bool done)
         {
             var entity = SelectTask(id);
-            entity.Titel= title;
-            entity.Estimate= estimate;
-            entity.Priority = (int)priority;
-            entity.DueDate = dueDate.Ticks;
-            entity.Description = description;
             entity.Done= done;
             _db.Update(entity);
             _db.SaveChanges();
             return entity;
         }
 
-        public TaskEntity DeleteTask(int id)
+        public TaskEntity DeleteTask(long id)
         {
             var entity = SelectTask(id);
             _db.Remove(entity);
