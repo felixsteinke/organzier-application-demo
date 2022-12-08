@@ -1,0 +1,38 @@
+name: Deployment
+on:
+  workflow_dispatch:
+  workflow_run:
+    workflows:
+      - Docker-Image
+    types:
+      - completed
+    branches:
+      - master
+
+jobs:
+  ssh-deploy:
+    name: Deploy Image
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: BW Cloud Deployment
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.BW_CLOUD_IP }}
+          username: ${{ secrets.BW_CLOUD_USER }}
+          key: ${{ secrets.BW_CLOUD_PRIVATE_KEY }}
+          passphrase: ${{ secrets.BW_CLOUD_PASSPHRASE }}
+          script: |
+            docker container ls
+            echo "[INFO] Download docker-compose.yml file:"
+            curl -H 'Accept: application/vnd.github.v4.raw' -o docker-compose.yml -L https://api.github.com/repos/${{ github.repository }}/contents/.docker/docker-compose-prod.yml
+            echo "[INFO] Stop container stack:"
+            sudo docker compose kill
+            sudo docker compose rm --stop --force
+            echo "[INFO] Update images:"
+            sudo docker compose pull
+            echo "[INFO] Run container stack:"
+            sudo docker compose up -d
+            echo "[INFO] Delete docker-compose.yml file:"
+            rm docker-compose.yml
+            docker container ls
