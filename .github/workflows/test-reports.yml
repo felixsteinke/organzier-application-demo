@@ -1,4 +1,4 @@
-name: testreports
+name: Test-Reports
 on:
   push:
   pull_request:
