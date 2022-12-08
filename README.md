@@ -1,4 +1,6 @@
-[![build and test](https://github.com/felixsteinke/organzier-application-demo/actions/workflows/build_and_test.yml/badge.svg)](https://github.com/felixsteinke/organzier-application-demo/actions/workflows/build_and_test.yml)
+[![Test-Reports](https://github.com/felixsteinke/organzier-application-demo/actions/workflows/test-reports.yml/badge.svg)](https://github.com/felixsteinke/organzier-application-demo/actions/workflows/test-reports.yml)
+[![Docker-Image](https://github.com/felixsteinke/organzier-application-demo/actions/workflows/docker-image.yml/badge.svg)](https://github.com/felixsteinke/organzier-application-demo/actions/workflows/docker-image.yml)
+[![Deployment](https://github.com/felixsteinke/organzier-application-demo/actions/workflows/deployment.yml/badge.svg)](https://github.com/felixsteinke/organzier-application-demo/actions/workflows/deployment.yml)
 
 # Organizer Application
 

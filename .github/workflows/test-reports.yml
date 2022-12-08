@@ -33,7 +33,7 @@ jobs:
         uses: zyborg/dotnet-tests-report@v1
         with:
           project_path: ./organizer-api/organizer-api.sln
-          report_name: testresults
+          report_name: Test Results
           report_title: Organizer Test Results
           set_check_status_from_test_outcome: true
           github_token: ${{ secrets.GITHUB_TOKEN }}
