@@ -4,28 +4,33 @@
 
 # Organizer Application
 
-System to show different demonstrate different concepts for System Design. 
-It contains a ASP.NET Core API, that uses a PostgresDB with the Entityframework and Keycloak for the authentification.
-A Angular UI will use the API and is the entrypoint for users into the system.
+System to show different demonstrate different concepts for System Design.
+It contains an ASP.NET Core API, that uses a PostgresDB with the EntityFramework and Keycloak for the Authentication.
+An Angular UI will use the API and is the entrypoint for users into the system.
 
 The entire system will be deployed on a PaaS Cloud with docker compose via GitHub Actions.
 
 ```
 root
- |___ .docker					--> docker compose files to run the entire system
- |___ .github/workflows				--> github action definitions
- |___ e2e-test					--> project within the api.sln for testing
- |		 |___ EndToEnd			--> NUnit tests with Playwright
- |___ organizer-api				--> project within the api.sln for testing
- |		 |___ Controllers		--> controller with endpoints registered in the program.cs
- |		 |___ Databases			--> database layer with DBContexts registered in the program.cs
- |		 |___ Enums			--> definied constants
- |		 |___ Migrations		--> generated from the EF with Add-Migration
- |		 |___ Services			--> application layer with registered services in the program.cs
- |		 |___ orginizer-api.sln		--> solution that contains multiple projects
- |___ organizer-api-test			--> project within the api.sln for testing
-		 |___ Integration		--> XUnit integreation testing (starts the program.cs & testcontainers)
-		 |___ Unit			--> XUnit unit testing 
+ |_ .docker			--> docker compose files to run the entire system
+ |_ .github/workflows		--> github action definitions
+ |_ e2e-test			--> .NET project within the api.sln for testing
+ |	|_ EndToEnd			--> NUnit tests with Playwright
+ |_ organizer-api		--> .NET project within the api.sln for testing
+ |	|_ Controllers			--> controller with endpoints registered in the program.cs
+ |	|_ Databases			--> database layer with DBContexts registered in the program.cs
+ |	|_ Enums			--> definied constants
+ |	|_ Migrations			--> generated from the EF with Add-Migration
+ |	|_ Services			--> application layer with registered services in the program.cs
+ |	|_ orginizer-api.sln		--> solution that contains multiple projects
+ |_ organizer-api-test		--> .NET project within the api.sln for testing
+ |	|_ Integration			--> XUnit integreation testing (starts the program.cs & testcontainers)
+ |	|_ Unit				--> XUnit unit testing 
+ |_ organizer-ui		--> Angular project as UI for the API
+ 	|_ src/app			--> main application component with module import and routing
+ 		  |_ view		    --> components that contain components and are accessible by the routing
+ 		  |_ components             --> components that are used within vuews
+ 		  |_ services               --> services that use APIs
 ```
 
 ## API
@@ -33,14 +38,14 @@ root
 ### Development Tools
 
 * [Visual Studio 2022](https://visualstudio.microsoft.com/de/downloads/)
-	* .NET 7 (selectable in the installer)
-	* ASP.NET Application Development
-	* [NuGet Source Configuration](https://learn.microsoft.com/en-us/azure/devops/artifacts/nuget/upstream-sources?view=azure-devops#add-nuget-gallery-upstream-source)
+  * .NET 7 (selectable in the installer)
+  * ASP.NET Application Development
+  * [NuGet Source Configuration](https://learn.microsoft.com/en-us/azure/devops/artifacts/nuget/upstream-sources?view=azure-devops#add-nuget-gallery-upstream-source)
 * [Docker Desktop](https://www.docker.com/products/docker-desktop/)
 
 ### EntityFramework & Database
 
-The application depends on a Postgres Database. On startup it will apply the [Migrations](./organizer-api/Migrations).
+The application depends on a Postgres Database. On startup, it will apply the [Migrations](./organizer-api/Migrations).
 Within the development, the DB can be started as a docker container:
 
 ```shell
@@ -51,8 +56,9 @@ Keep in mind to sync the settings with the [appsettings.json](./organizer-api/ap
 
 __Updating the Database Layer:__
 
-The [Database Layer](./organizer-api/Databases) is defines `Reposytories` as definition of `DbContexts` and contain `DbSets`.
-The `DbSets` register the `Entitites` in the EntityFramework. 
+The [Database Layer](./organizer-api/Databases) is defines `Reposytories` as definition of `DbContexts` and
+contain `DbSets`.
+The `DbSets` register the `Entitites` in the EntityFramework.
 Within the `Entity`-Classes several configurations can be made for the __Code-First Approach__.
 
 When the modification is finished, it is required to update the `Migration` within the __Package Manager Console__:
@@ -64,16 +70,17 @@ Update-Database
 
 __Behaviour in Production:__
 
-In production the database container will be started with the docker compose and if there is no exisiting volume, 
+In production the database container will be started with the docker compose and if there is no existing volume,
 the application will apply the Migration on startup. This means everything should be automated.
 
 ### Unit Testing
 
-For the unit tests, the testing framework `XUnit` is used because it has the highest isolation. 
-Unit tests should run completely isolated and fast. Therefore the unit under test are completely isolated.
-For example when testing a `Service` with the dependency to a `DbContext`, it is required to mock the dependency with the `Moq`-Library.
+For the unit tests, the testing framework `XUnit` is used because it has the highest isolation.
+Unit tests should run completely isolated and fast. Therefore, the unit under test are completely isolated.
+For example when testing a `Service` with the dependency to a `DbContext`, it is required to mock the dependency with
+the `Moq`-Library.
 
-These tests are run by the GitHub Action for Continuous Integration (CI). 
+These tests are run by the GitHub Action for Continuous Integration (CI).
 
 __Tutorials:__
 
@@ -83,9 +90,10 @@ __Tutorials:__
 
 ### Integration Testing
 
-For the integration tests, the testing framework `XUnit` is used aswell. 
+For the integration tests, the testing framework `XUnit` is used as well.
 They also should be highly isolated and fast. The difference to unit tests is the preparation of the unit under test.
-In the integration test, the entire application is started up in the test and several `Testcontainers` will be available and isolated within the test.
+In the integration test, the entire application is started up in the test and several `Testcontainers` will be available
+and isolated within the test.
 
 To make the verification easier, the `Verify`-Library is used to make snapshots of verified results.
 
@@ -101,17 +109,17 @@ __Tutorials:__
 
 ### E2E Testing
 
-End-To-End Testing is more complex than Unit and Integration Testing. 
+End-To-End Testing is more complex than Unit and Integration Testing.
 It takes the finished container und starts up the entire system within an isolated test environment.
 
-To execute User-Actions on the UI, the `Playwright`-Library is used. 
+To execute User-Actions on the UI, the `Playwright`-Library is used.
 This library is mostly supported within the testing framework `NUnit` and therefore it is used for this project.
 
-The results on the UI can be verified with `Assert` and `Playwright` aswell. 
+The results on the UI can be verified with `Assert` and `Playwright` as well.
 To have the least effort with the tests, `Verify` can be used on top of `Playwright`.
 
-The least effort is to generate tests with the `Playwright Code Generator` and then `Verify` is used on the page. 
-It verifies the full `html & png of the page`. 
+The least effort is to generate tests with the `Playwright Code Generator` and then `Verify` is used on the page.
+It verifies the full `html & png of the page`.
 
 > Disclaimer: This is still work in progress und not fully functional yet!
 
@@ -120,8 +128,25 @@ __Tutorials:__
 * [Playwright UI Automation](https://playwright.dev/)
 * [Playwright Code Generator](https://playwright.dev/docs/codegen)
 
+## UI
+
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.1.1.
+
+### Angular CLI
+
+* __Development server:__ Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will
+  automatically reload if you change any of the source files.
+* __Code scaffolding:__ Run `ng generate component component-name` to generate a new component. You can also
+  use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+* __Build:__ Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+* __Running unit tests:__ Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+* __Running end-to-end tests:__ Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this
+  command, you need to first add a package that implements end-to-end testing capabilities.
+* __Further help:__ To get more help on the Angular CLI use `ng help` or go check out
+  the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+
 ## Deployment
 
-The deployment is done with the GitHub Actions. 
+The deployment is done with the GitHub Actions.
 The container image gets published as package on GitHub and after that deployed with SSH on the BW-Cloud.
 The BW-Cloud provides PaaS and is available for students.
