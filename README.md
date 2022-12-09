@@ -4,9 +4,9 @@
 
 # Organizer Application
 
-System to show different demonstrate different concepts for System Design.
-It contains an ASP.NET Core API, that uses a PostgresDB with the EntityFramework and Keycloak for the Authentication.
-An Angular UI will use the API and is the entrypoint for users into the system.
+System to show different demonstrate different concepts for System Design. It contains an ASP.NET Core API, that uses a
+PostgresDB with the EntityFramework and Keycloak for the Authentication. An Angular UI will use the API and is the
+entrypoint for users into the system.
 
 The entire system will be deployed on a PaaS Cloud with docker compose via GitHub Actions.
 
@@ -57,9 +57,8 @@ Keep in mind to sync the settings with the [appsettings.json](./organizer-api/ap
 __Updating the Database Layer:__
 
 The [Database Layer](./organizer-api/Databases) is defines `Reposytories` as definition of `DbContexts` and
-contain `DbSets`.
-The `DbSets` register the `Entitites` in the EntityFramework.
-Within the `Entity`-Classes several configurations can be made for the __Code-First Approach__.
+contain `DbSets`. The `DbSets` register the `Entitites` in the EntityFramework. Within the `Entity`-Classes several
+configurations can be made for the __Code-First Approach__.
 
 When the modification is finished, it is required to update the `Migration` within the __Package Manager Console__:
 
@@ -70,15 +69,14 @@ Update-Database
 
 __Behaviour in Production:__
 
-In production the database container will be started with the docker compose and if there is no existing volume,
-the application will apply the Migration on startup. This means everything should be automated.
+In production the database container will be started with the docker compose and if there is no existing volume, the
+application will apply the Migration on startup. This means everything should be automated.
 
 ### Unit Testing
 
-For the unit tests, the testing framework `XUnit` is used because it has the highest isolation.
-Unit tests should run completely isolated and fast. Therefore, the unit under test are completely isolated.
-For example when testing a `Service` with the dependency to a `DbContext`, it is required to mock the dependency with
-the `Moq`-Library.
+For the unit tests, the testing framework `XUnit` is used because it has the highest isolation. Unit tests should run
+completely isolated and fast. Therefore, the unit under test are completely isolated. For example when testing
+a `Service` with the dependency to a `DbContext`, it is required to mock the dependency with the `Moq`-Library.
 
 These tests are run by the GitHub Action for Continuous Integration (CI).
 
@@ -90,10 +88,9 @@ __Tutorials:__
 
 ### Integration Testing
 
-For the integration tests, the testing framework `XUnit` is used as well.
-They also should be highly isolated and fast. The difference to unit tests is the preparation of the unit under test.
-In the integration test, the entire application is started up in the test and several `Testcontainers` will be available
-and isolated within the test.
+For the integration tests, the testing framework `XUnit` is used as well. They also should be highly isolated and fast.
+The difference to unit tests is the preparation of the unit under test. In the integration test, the entire application
+is started up in the test and several `Testcontainers` will be available and isolated within the test.
 
 To make the verification easier, the `Verify`-Library is used to make snapshots of verified results.
 
@@ -109,17 +106,17 @@ __Tutorials:__
 
 ### E2E Testing
 
-End-To-End Testing is more complex than Unit and Integration Testing.
-It takes the finished container und starts up the entire system within an isolated test environment.
+End-To-End Testing is more complex than Unit and Integration Testing. It takes the finished container und starts up the
+entire system within an isolated test environment.
 
-To execute User-Actions on the UI, the `Playwright`-Library is used.
-This library is mostly supported within the testing framework `NUnit` and therefore it is used for this project.
+To execute User-Actions on the UI, the `Playwright`-Library is used. This library is mostly supported within the testing
+framework `NUnit` and therefore it is used for this project.
 
-The results on the UI can be verified with `Assert` and `Playwright` as well.
-To have the least effort with the tests, `Verify` can be used on top of `Playwright`.
+The results on the UI can be verified with `Assert` and `Playwright` as well. To have the least effort with the
+tests, `Verify` can be used on top of `Playwright`.
 
-The least effort is to generate tests with the `Playwright Code Generator` and then `Verify` is used on the page.
-It verifies the full `html & png of the page`.
+The least effort is to generate tests with the `Playwright Code Generator` and then `Verify` is used on the page. It
+verifies the full `html & png of the page`.
 
 > Disclaimer: This is still work in progress und not fully functional yet!
 
@@ -139,6 +136,20 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 * [Docker Desktop](https://www.docker.com/products/docker-desktop/)
 * Optional: [IntelliJ IDEA](https://www.jetbrains.com/idea/download)
 
+### Material UI
+
+Install the [Angular Material](https://material.angular.io/components) dependency to the project:
+
+```shell
+ng add @angular/material@14.2.7
+```
+
+Add the [material-module.ts](organizer-ui/src/app/material-module.ts) file and import it in
+the [app.module.ts](organizer-ui/src/app/app.module.ts).
+
+For a custom theme it is required to create a [themes.scss](organizer-ui/src/themes.scss) and add it to the `styles` in
+the [angular.json](organizer-ui/angular.json).
+
 ### Angular CLI
 
 * __Development server:__ Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will
@@ -154,6 +165,5 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 ## Deployment
 
-The deployment is done with the GitHub Actions.
-The container image gets published as package on GitHub and after that deployed with SSH on the BW-Cloud.
-The BW-Cloud provides PaaS and is available for students.
+The deployment is done with the GitHub Actions. The container image gets published as package on GitHub and after that
+deployed with SSH on the BW-Cloud. The BW-Cloud provides PaaS and is available for students.
