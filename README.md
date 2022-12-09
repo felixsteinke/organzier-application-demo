@@ -13,19 +13,19 @@ The entire system will be deployed on a PaaS Cloud with docker compose via GitHu
 ```
 root
  |___ .docker					--> docker compose files to run the entire system
- |___ .github/workflows			--> github action definitions
+ |___ .github/workflows				--> github action definitions
  |___ e2e-test					--> project within the api.sln for testing
  |		 |___ EndToEnd			--> NUnit tests with Playwright
  |___ organizer-api				--> project within the api.sln for testing
  |		 |___ Controllers		--> controller with endpoints registered in the program.cs
  |		 |___ Databases			--> database layer with DBContexts registered in the program.cs
- |		 |___ Enums				--> definied constants
+ |		 |___ Enums			--> definied constants
  |		 |___ Migrations		--> generated from the EF with Add-Migration
  |		 |___ Services			--> application layer with registered services in the program.cs
- |		 |___ orginizer-api.sln	--> solution that contains multiple projects
- |___ organizer-api-test		--> project within the api.sln for testing
+ |		 |___ orginizer-api.sln		--> solution that contains multiple projects
+ |___ organizer-api-test			--> project within the api.sln for testing
 		 |___ Integration		--> XUnit integreation testing (starts the program.cs & testcontainers)
-		 |___ Unit				--> XUnit unit testing 
+		 |___ Unit			--> XUnit unit testing 
 ```
 
 ## API
@@ -66,10 +66,6 @@ __Behaviour in Production:__
 
 In production the database container will be started with the docker compose and if there is no exisiting volume, 
 the application will apply the Migration on startup. This means everything should be automated.
-
-__Tutorials:__
-
-* 
 
 ### Unit Testing
 
