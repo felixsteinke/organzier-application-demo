@@ -150,6 +150,12 @@ the [app.module.ts](organizer-ui/src/app/app.module.ts).
 For a custom theme it is required to create a [themes.scss](organizer-ui/src/themes.scss) and add it to the `styles` in
 the [angular.json](organizer-ui/angular.json).
 
+For Grids and Tables the [W2UI](http://www.w2ui.com/web/demos/#/grid) dependency can be added to the project:
+
+```shell
+ng add w2ui
+```
+
 ### Angular CLI
 
 * __Development server:__ Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will
