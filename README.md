@@ -129,6 +129,13 @@ __Tutorials:__
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.1.1.
 
+__UI Container:__
+
+* Run `docker build -t organizer-ui .` to build the image with docker.
+* Run `docker run -d -p 4200:80 --name organizer-ui organizer-ui` to run the container with docker.
+
+> Disclaimer: Current Dockerfile does not build the project automatically.
+
 ### Development Tools
 
 * [NodeJS](https://nodejs.org/en/download/)
