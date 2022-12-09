@@ -132,6 +132,13 @@ __Tutorials:__
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.1.1.
 
+### Development Tools
+
+* [NodeJS](https://nodejs.org/en/download/)
+  * Angular CLI 14.1.1: `npm install -g @angular/cli@14.1.1`
+* [Docker Desktop](https://www.docker.com/products/docker-desktop/)
+* Optional: [IntelliJ IDEA](https://www.jetbrains.com/idea/download)
+
 ### Angular CLI
 
 * __Development server:__ Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will
