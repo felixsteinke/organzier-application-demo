@@ -1,0 +1,14 @@
+<div fxLayout="column" fxLayoutAlign="start start" id="task-table-root">
+  <mat-form-field appearance="outline">
+    <mat-label>Choose Table Library</mat-label>
+    <mat-select [(ngModel)]="selectedOption">
+      <mat-option [value]="1">Angular Material</mat-option>
+      <mat-option [value]="2">W2 UI</mat-option>
+      <mat-option [value]="3">Option 3</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <app-task-table-v1 *ngIf="selectedOption === 1"></app-task-table-v1>
+  <app-task-table-v2 *ngIf="selectedOption === 2"></app-task-table-v2>
+  <app-task-table-v3 *ngIf="selectedOption === 3"></app-task-table-v3>
+</div>

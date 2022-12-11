@@ -163,6 +163,20 @@ For Grids and Tables the [W2UI](http://www.w2ui.com/web/demos/#/grid) dependency
 ng add w2ui
 ```
 
+To make the JS-Library accessible, it is required to add following properties to
+the [angular.json](organizer-ui/angular.json):
+
+* `./node_modules/w2ui/w2ui.min.js` to the `scripts`
+* `./node_modules/w2ui/w2ui.min.css` to the `styles`
+
+### Flex Layout
+
+To structure the layout, the [Angular FlexLayout](https://github.com/angular/flex-layout) is used. It helps to align
+content easily and is defined in the HTML. To not cluster too many tags into the HTML, most of the time only `<div>`s
+have an applied layout.
+
+Get more information on the [Demo Page](https://tburleson-layouts-demos.firebaseapp.com/#/docs).
+
 ### Angular CLI
 
 * __Development server:__ Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will

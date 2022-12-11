@@ -1,0 +1,45 @@
+.home-grid {
+  display: grid;
+  grid-template-areas:
+    'info-area image-area';
+  grid-template-columns:
+    40vw auto;
+
+  gap: 8vw;
+  padding: 0 1vw;
+
+  .info-grid-area {
+    grid-area: info-area;
+
+    .main-text {
+      margin: 3vh 0;
+
+      h2 {
+        text-align: right;
+        font-size: 7vh;
+      }
+    }
+
+    .side-text {
+      margin: 2vh 0;
+
+      h2 {
+        text-align: right;
+        font-size: 5vh;
+      }
+    }
+
+    button {
+      width: 11vw;
+      min-width: 110px;
+    }
+  }
+
+  .image-grid-area {
+    grid-area: image-area;
+
+    img {
+      width: 80%;
+    }
+  }
+}

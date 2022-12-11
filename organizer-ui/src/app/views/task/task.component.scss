@@ -1,0 +1,17 @@
+.task-grid {
+  display: grid;
+  grid-template-areas:
+    'table-area item-area';
+  grid-template-columns:
+    68% 28%;
+
+  gap: 10px;
+
+  .table-grid-area {
+    grid-area: table-area;
+  }
+
+  .item-grid-area {
+    grid-area: item-area;
+  }
+}
