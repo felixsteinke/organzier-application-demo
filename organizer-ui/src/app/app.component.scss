@@ -1,0 +1,18 @@
+#app-toolbar {
+  height: 64px;
+}
+
+.toolbar-title {
+  margin-left: 1vw;
+  cursor: pointer;
+}
+
+.toolbar-spacer {
+  flex: 1 1 auto;
+}
+
+#app-router-container {
+  height: calc(100% - 76px);
+  padding-top: 12px;
+  overflow-y: auto;
+}

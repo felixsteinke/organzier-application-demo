@@ -1,0 +1,57 @@
+<div class="example-container mat-elevation-z8">
+  <div *ngIf="isLoading"
+       class="example-loading-shade">
+    <mat-spinner *ngIf="isLoading"></mat-spinner>
+  </div>
+
+  <div class="task-table-container">
+    <table [dataSource]="data" class="example-table" mat-table
+           matSort matSortActive="created" matSortDirection="desc" matSortDisableClear>
+
+      <!-- Title Column -->
+      <ng-container matColumnDef="title">
+        <th *matHeaderCellDef mat-header-cell>Title</th>
+        <td *matCellDef="let row" mat-cell>{{row.title}}</td>
+      </ng-container>
+
+      <!-- Estimate Column -->
+      <ng-container matColumnDef="estimate">
+        <th *matHeaderCellDef mat-header-cell>Estimate</th>
+        <td *matCellDef="let row" mat-cell>{{row.estimate}}</td>
+      </ng-container>
+
+      <!-- Priority Column -->
+      <ng-container matColumnDef="priority">
+        <th *matHeaderCellDef mat-header-cell>Priority</th>
+        <td *matCellDef="let row" mat-cell>{{row.priority}}</td>
+      </ng-container>
+
+      <!-- Due Date Column -->
+      <ng-container matColumnDef="due">
+        <th *matHeaderCellDef disableClear mat-header-cell mat-sort-header>
+          Due Date
+        </th>
+        <td *matCellDef="let row" mat-cell>{{row.dueDate | date}}</td>
+      </ng-container>
+
+      <!-- State Column -->
+      <ng-container matColumnDef="done">
+        <th *matHeaderCellDef mat-header-cell>State</th>
+        <td *matCellDef="let row" mat-cell>
+          <mat-icon>{{row.done ? 'check_circle_outline' : 'highlight_off'}}</mat-icon>
+        </td>
+      </ng-container>
+
+      <!-- Description Column -->
+      <ng-container matColumnDef="description">
+        <th *matHeaderCellDef mat-header-cell>Description</th>
+        <td *matCellDef="let row" mat-cell>{{row.description}}</td>
+      </ng-container>
+
+      <tr *matHeaderRowDef="displayedColumns" mat-header-row></tr>
+      <tr (click)="clickRow(row)" *matRowDef="let row; columns: displayedColumns;" class="clickable-row" mat-row></tr>
+    </table>
+  </div>
+
+  <mat-paginator [length]="resultsLength" [pageSize]="30"></mat-paginator>
+</div>

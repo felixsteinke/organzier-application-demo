@@ -1,0 +1,23 @@
+#task-item-root {
+}
+
+#task-item-data-form {
+  mat-form-field, mat-radio-group {
+    width: 100%;
+  }
+
+  mat-radio-button {
+    margin-left: 10px;
+    margin-right: 40px;
+  }
+
+  .field-with-hint {
+    margin-bottom: 1em;
+  }
+}
+
+#task-item-actions {
+  button {
+    margin: 1em;
+  }
+}

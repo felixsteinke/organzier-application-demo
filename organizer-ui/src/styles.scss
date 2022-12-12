@@ -1,0 +1,27 @@
+/* You can add global styles to this file, and also import other style files */
+
+html, body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+.hyperlink-no-style {
+  color: inherit; /* blue colors for links too */
+  text-decoration: inherit; /* no underline */
+}
+
+.primary-snack-bar {
+  button {
+    color: #5168e2;
+  }
+}
+
+.warn-snack-bar {
+  button {
+    color: #ff0000;
+  }
+}

@@ -31,7 +31,7 @@ namespace organizer_api_test.Integration
             var response = await _client.PostAsJsonAsync("/api/task", new TaskModel
             {
                 Id = 1,
-                Titel = "Testing Domain Task",
+                Title = "Testing Domain Task",
                 EntryDate = new DateTime(638059479207954693),
                 Estimate = 5,
                 Priority = Priority.MEDIUM,

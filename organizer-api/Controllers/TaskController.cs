@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
+using Newtonsoft.Json;
 using organizer_api.Controllers.Models;
 using organizer_api.Database.Entities;
 using organizer_api.Databases.Mapper;
@@ -28,9 +29,9 @@ namespace organizer_api.Controllers
         [HttpPost("")]
         public ActionResult<TaskModel> PostTask(TaskModel model)
         {
-            _logger.LogInformation("Requesting insert Task.");
+            _logger.LogInformation($"Requesting insert Task: {JsonConvert.SerializeObject(model)}");
             return Ok(_taskMapper.ToDomain(_dbService.InsertTask(
-                model.Titel,
+                model.Title,
                 model.Estimate,
                 model.Priority,
                 model.DueDate,
@@ -55,18 +56,27 @@ namespace organizer_api.Controllers
             return Ok(new MessageModel("Saved 1000 random Task entitites."));
         }
 
-        [HttpGet("")]
-        public ActionResult<TaskModel> GetTask()
+        [HttpPut("")]
+        public ActionResult<TaskModel> PutTask(TaskModel model)
         {
-            _logger.LogInformation("Requesting get Task.");
-            return Ok(_taskMapper.ToDomain(_dbService.SelectTask(1)));
+            _logger.LogInformation("Requesting update Task.");
+            return Ok(_taskMapper.ToDomain(_dbService.UpdateTask(
+                model.Id,
+                model.Done)));
         }
 
-        [HttpDelete("")]
-        public ActionResult<TaskEntity> DeleteTask()
+        [HttpGet("{id}")]
+        public ActionResult<TaskModel> GetTask(long id)
         {
-            _logger.LogInformation("Requesting delete Task.");
-            return Ok(_taskMapper.ToDomain(_dbService.DeleteTask(1)));
+            _logger.LogInformation($"Requesting get Task {id}.");
+            return Ok(_taskMapper.ToDomain(_dbService.SelectTask(id)));
+        }
+
+        [HttpDelete("{id}")]
+        public ActionResult<TaskModel> DeleteTask(long id)
+        {
+            _logger.LogInformation($"Requesting delete Task for task {id}.");
+            return Ok(_taskMapper.ToDomain(_dbService.DeleteTask(id)));
         }
 
         [HttpGet("all")]

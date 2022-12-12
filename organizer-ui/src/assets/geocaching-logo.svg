@@ -1,0 +1,49 @@
+<?xml version="1.0"?>
+<svg id="svg3829" version="1.1"
+     viewBox="0 0 263.46 267.61"
+     xmlns="http://www.w3.org/2000/svg"
+     xmlns:cc="http://creativecommons.org/ns#"
+     xmlns:dc="http://purl.org/dc/elements/1.1/"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+  <g id="layer1" transform="translate(-211.29 -137.1)">
+    <path
+      d="m405.11 260.89c9.6672 1.5094 18.728-5.1038 20.238-14.771 1.5094-9.6672-5.1038-18.728-14.771-20.238-52.025-3.0724-100.37 21.375-132.3 62.014-7.2755 9.2597-11.853 17.18-9.9117 18.961 1.4777 1.2572 7.3573-2.3542 18.498-9.7189 36.747-24.293 72.791-44.287 118.24-36.247zm-87.233-15.817c7.2071-4.7512 14.74-8.9497 22.541-12.514-1.0789-11.558-0.64134-24.341 1.2352-39.063l1.8252-12.653s2.5299-12.526 0.10311-14.583c-3.9394-3.3394-9.3908 9.433-15.248 23.631-8.0872 19.605-11.239 37.853-10.457 55.181zm41.595 83.374c6.6848 7.1451 17.896 7.5182 25.041 0.83339 7.1451-6.6848 7.5182-17.896 0.83339-25.041-13.138-13.115-23.405-24.983-30.98-37.089-9.3083 2.8761-18.327 6.8106-27.074 11.348 7.6734 17.07 18.8 33.543 32.179 49.949zm108.49-94.279c20.397 62.137-6.1242 134-66.949 160.42-54.86 23.827-125.06 4.1265-161.19-44.003-60.454-80.531-19.642-187.5 73.357-209.93 35.97-8.6779 79.454-1.75 106.8 23.848 0 0 12.52 10.628 9.2509 12.593-3.3655 2.0227-23.762-13.763-35.828-18.536-78.771-31.159-166.13 31.806-159.76 113.08 4.7048 59.952 55.215 103.37 114.07 103.15 67.983-0.26043 108.96-67.04 87.325-127.51-3.6202-9.0904 0.81425-19.394 9.9046-23.014 9.0904-3.6202 19.394 0.81425 23.014 9.9046z"
+      fill-rule="evenodd" id="_249333344"/>
+  </g>
+  <metadata>
+    <rdf:RDF>
+      <cc:Work>
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+        <cc:license rdf:resource="http://creativecommons.org/licenses/publicdomain/"/>
+        <dc:publisher>
+          <cc:Agent rdf:about="http://openclipart.org/">
+            <dc:title>Openclipart</dc:title>
+          </cc:Agent>
+        </dc:publisher>
+        <dc:title>Geocaching logo variant</dc:title>
+        <dc:date>2013-08-22T20:54:51</dc:date>
+        <dc:description>Geocaching logo variant - tribal style</dc:description>
+        <dc:source>http://openclipart.org/detail/182132/geocaching-logo-variant-by-ftfshop.eu-182132</dc:source>
+        <dc:creator>
+          <cc:Agent>
+            <dc:title>ftfshop.eu</dc:title>
+          </cc:Agent>
+        </dc:creator>
+        <dc:subject>
+          <rdf:Bag>
+            <rdf:li>geocaching</rdf:li>
+            <rdf:li>logo</rdf:li>
+            <rdf:li>opencaching</rdf:li>
+            <rdf:li>tribal</rdf:li>
+          </rdf:Bag>
+        </dc:subject>
+      </cc:Work>
+      <cc:License rdf:about="http://creativecommons.org/licenses/publicdomain/">
+        <cc:permits rdf:resource="http://creativecommons.org/ns#Reproduction"/>
+        <cc:permits rdf:resource="http://creativecommons.org/ns#Distribution"/>
+        <cc:permits rdf:resource="http://creativecommons.org/ns#DerivativeWorks"/>
+      </cc:License>
+    </rdf:RDF>
+  </metadata>
+</svg>

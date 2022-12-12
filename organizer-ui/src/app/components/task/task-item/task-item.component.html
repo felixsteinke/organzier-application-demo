@@ -1,0 +1,60 @@
+<div fxLayout="column" fxLayoutAlign="start center" id="task-item-root">
+  <div fxLayout="column" fxLayoutAlign="start start" id="task-item-data-form">
+    <mat-form-field appearance="outline">
+      <mat-label>Database ID</mat-label>
+      <input (ngModelChange)="taskId = task.id" [(ngModel)]="task.id" matInput>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Title</mat-label>
+      <input [(ngModel)]="task.title" matInput>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="field-with-hint">
+      <mat-label>Entry Date</mat-label>
+      <input [(ngModel)]="task.entryDate" [matDatepicker]="entryDatePicker" matInput>
+      <mat-hint>MM/DD/YYYY</mat-hint>
+      <mat-datepicker-toggle [for]="entryDatePicker" matSuffix></mat-datepicker-toggle>
+      <mat-datepicker #entryDatePicker></mat-datepicker>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Estimate</mat-label>
+      <input [(ngModel)]="task.estimate" matInput>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Priority</mat-label>
+      <mat-select [(ngModel)]="task.priority">
+        <mat-option *ngFor="let priority of priorityOptions" [value]="priority">
+          {{priority}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="field-with-hint">
+      <mat-label>Due Date</mat-label>
+      <input [(ngModel)]="task.dueDate" [matDatepicker]="dueDatePicker" matInput>
+      <mat-hint>MM/DD/YYYY</mat-hint>
+      <mat-datepicker-toggle [for]="dueDatePicker" matSuffix></mat-datepicker-toggle>
+      <mat-datepicker #dueDatePicker></mat-datepicker>
+    </mat-form-field>
+
+    <mat-radio-group [(ngModel)]="task.done" class="mat-form-field-wrapper">
+      <mat-radio-button [value]="false">Pending</mat-radio-button>
+      <mat-radio-button [value]="true">Done</mat-radio-button>
+    </mat-radio-group>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Description</mat-label>
+      <textarea [(ngModel)]="task.description" matInput></textarea>
+    </mat-form-field>
+  </div>
+
+  <div fxLayout="row wrap" fxLayoutAlign="center start" id="task-item-actions">
+    <button (click)="getTask()" mat-stroked-button>Reload Item</button>
+    <button (click)="addTask()" color="primary" mat-stroked-button>Insert Item</button>
+    <button (click)="updateTask()" color="accent" mat-stroked-button>Update Item</button>
+    <button (click)="deleteTask()" color="warn" mat-stroked-button>Delete Item</button>
+  </div>
+</div>

@@ -1,0 +1,6 @@
+<div class="task-grid">
+  <app-task-table (selectedTaskId)="onSelectedTaskId($event)" class="table-grid-area"></app-task-table>
+  <div fxLayout="column" fxLayoutAlign="center center">
+    <app-task-item [taskId]="selectedTaskId" class="item-grid-area"></app-task-item>
+  </div>
+</div>

@@ -22,7 +22,7 @@ namespace organizer_api_test.Unit.Database
             var taskModel = new TaskModel
             {
                 Id = 1,
-                Titel = "Testing Domain Task",
+                Title = "Testing Domain Task",
                 EntryDate = new DateTime(638059479207954693),
                 Estimate = 5,
                 Priority = Priority.MEDIUM,
@@ -64,7 +64,7 @@ namespace organizer_api_test.Unit.Database
             var taskModel1 = new TaskModel
             {
                 Id = 1,
-                Titel = "Testing Domain Task",
+                Title = "Testing Domain Task",
                 EntryDate = new DateTime(DateTime.Now.Ticks),
                 Estimate = 5,
                 Priority = Priority.MEDIUM,
@@ -77,7 +77,7 @@ namespace organizer_api_test.Unit.Database
             var taskModel2 = _taskMapper.ToDomain(taskEntity);
             // Assert
             Assert.Equal(taskModel1.Id, taskModel2.Id);
-            Assert.Equal(taskModel1.Titel, taskModel2.Titel);
+            Assert.Equal(taskModel1.Title, taskModel2.Title);
             Assert.Equal(taskModel1.EntryDate, taskModel2.EntryDate);
             Assert.Equal(taskModel1.Estimate, taskModel2.Estimate);
             Assert.Equal(taskModel1.Priority, taskModel2.Priority);

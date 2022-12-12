@@ -1,0 +1,20 @@
+#task-table-root {
+  padding: 1em;
+}
+
+#task-table-actions {
+  width: 100%;
+
+  button {
+    margin-bottom: 18.8125px;
+  }
+
+  .action-spacer {
+    flex: 1 1 auto;
+  }
+}
+
+
+#task-table-container {
+  width: 100%;
+}
