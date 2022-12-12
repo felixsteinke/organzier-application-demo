@@ -44,4 +44,8 @@ export class TaskTableV1Component implements OnInit, AfterViewInit {
   ngAfterViewInit() {
     this.sort.sortChange.subscribe(() => (this.paginator.pageIndex = 0));
   }
+
+  public clickRow(row: Task) {
+
+  }
 }

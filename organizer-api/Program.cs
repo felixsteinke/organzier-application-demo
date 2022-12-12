@@ -11,7 +11,15 @@ namespace organizer_api
         public static void Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
-
+            // CORS management
+            const string corsOrigin = "disableCors";
+            builder.Services.AddCors(options =>
+            {
+                options.AddPolicy(corsOrigin, corsBuilder => 
+                {
+                    corsBuilder.WithOrigins().AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod(); 
+                });
+            });
             // Add rest controllers to dependeny injection
             builder.Services.AddControllers();
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
@@ -32,6 +40,7 @@ namespace organizer_api
             }
 
             app.UseHttpsRedirection();
+            app.UseCors(corsOrigin);
             app.UseAuthorization();
             app.MapControllers();
 

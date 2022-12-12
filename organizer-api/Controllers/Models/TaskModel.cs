@@ -6,7 +6,7 @@ namespace organizer_api.Controllers.Models
     public class TaskModel
     {
         public long Id { get; set; }
-        public string Titel { get; set; }
+        public string Title { get; set; }
         public DateTime EntryDate { get; set; }
         public double Estimate { get; set; }
         [JsonConverter(typeof(JsonStringEnumConverter))]

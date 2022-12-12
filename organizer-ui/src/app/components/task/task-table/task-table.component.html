@@ -11,7 +11,7 @@
 
     <span class="action-spacer"></span>
 
-    <button (click)="generateTasks()" color="primary" mat-raised-button>
+    <button (click)="generateTasks()" [disabled]="isLoading" color="primary" mat-raised-button>
       Generate Data
     </button>
   </div>

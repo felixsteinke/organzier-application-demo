@@ -11,7 +11,7 @@ namespace organizer_api.Databases.Mapper
             return new TaskModel
             {
                 Id = entity.Id,
-                Titel = entity.Titel,
+                Title = entity.Titel,
                 EntryDate = new DateTime(entity.EntryDate),
                 Estimate = entity.Estimate,
                 Priority = (Priority)entity.Priority,
@@ -26,7 +26,7 @@ namespace organizer_api.Databases.Mapper
             return new TaskEntity
             {
                 Id = domain.Id,
-                Titel = domain.Titel,
+                Titel = domain.Title,
                 EntryDate = domain.EntryDate.Ticks,
                 Estimate = domain.Estimate,
                 Priority = (int)domain.Priority,
