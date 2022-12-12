@@ -1,4 +1,5 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, EventEmitter, OnInit, Output} from '@angular/core';
+import {Task} from "../../../../models/task";
 
 @Component({
   selector: 'app-task-table-v2',
@@ -6,6 +7,8 @@ import {Component, OnInit} from '@angular/core';
   styleUrls: ['./task-table-v2.component.scss']
 })
 export class TaskTableV2Component implements OnInit {
+
+  @Output() selectedTaskId = new EventEmitter<number>();
 
   constructor() {
     // read: https://stackoverflow.com/questions/44945766/use-external-javascript-library-in-angular-application/44946104#44946104
@@ -41,4 +44,8 @@ export class TaskTableV2Component implements OnInit {
 
   }
 
+
+  public clickRow(row: Task) {
+    this.selectedTaskId.emit(row.id);
+  }
 }

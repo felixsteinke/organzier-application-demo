@@ -1,4 +1,5 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, EventEmitter, OnInit, Output} from '@angular/core';
+import {Task} from "../../../../models/task";
 
 @Component({
   selector: 'app-task-table-v3',
@@ -7,10 +8,15 @@ import {Component, OnInit} from '@angular/core';
 })
 export class TaskTableV3Component implements OnInit {
 
+  @Output() selectedTaskId = new EventEmitter<number>();
+
   constructor() {
   }
 
   ngOnInit(): void {
   }
 
+  public clickRow(row: Task) {
+    this.selectedTaskId.emit(row.id);
+  }
 }

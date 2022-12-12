@@ -5,7 +5,7 @@
       <mat-select [(ngModel)]="selectedTableOption">
         <mat-option [value]="1">Angular Material</mat-option>
         <mat-option [value]="2">W2 UI</mat-option>
-        <mat-option [value]="3">Option 3</mat-option>
+        <mat-option [value]="3">AG Grid</mat-option>
       </mat-select>
     </mat-form-field>
 
@@ -19,7 +19,9 @@
   <div id="task-table-container">
     <app-task-table-v1 (selectedTaskId)="onSelectedTaskId($event)"
                        *ngIf="selectedTableOption === 1"></app-task-table-v1>
-    <app-task-table-v2 *ngIf="selectedTableOption === 2"></app-task-table-v2>
-    <app-task-table-v3 *ngIf="selectedTableOption === 3"></app-task-table-v3>
+    <app-task-table-v2 (selectedTaskId)="onSelectedTaskId($event)"
+                       *ngIf="selectedTableOption === 2"></app-task-table-v2>
+    <app-task-table-v3 (selectedTaskId)="onSelectedTaskId($event)"
+                       *ngIf="selectedTableOption === 3"></app-task-table-v3>
   </div>
 </div>
