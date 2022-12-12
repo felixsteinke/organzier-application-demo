@@ -13,7 +13,7 @@
   </button>
 
   <mat-menu #menu="matMenu">
-    <mat-radio-group (ngModelChange)="applyTheme()" [(ngModel)]="uiTheme">
+    <mat-radio-group (change)="applyTheme()" [(ngModel)]="uiTheme">
       <div mat-menu-item>
         <mat-radio-button [value]="UI_THEMES.PURPLE_AMBER" value="1">Deep Purple & Amber</mat-radio-button>
       </div>

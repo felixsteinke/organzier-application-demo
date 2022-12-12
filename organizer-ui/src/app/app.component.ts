@@ -11,7 +11,7 @@ import {Theme} from "./enums/theme";
 export class AppComponent {
 
   UI_THEMES = Theme;
-  uiTheme: string = Theme.INDIGO_PINK;
+  uiTheme: string = Theme.CUSTOM_DARK;
 
   constructor(private router: Router) {
   }
