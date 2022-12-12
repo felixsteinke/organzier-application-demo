@@ -1,5 +1,5 @@
 #app-toolbar {
-  margin-bottom: 2vh;
+  height: 64px;
 }
 
 .toolbar-title {
@@ -9,4 +9,10 @@
 
 .toolbar-spacer {
   flex: 1 1 auto;
+}
+
+#app-router-container {
+  height: calc(100% - 76px);
+  padding-top: 12px;
+  overflow-y: auto;
 }
