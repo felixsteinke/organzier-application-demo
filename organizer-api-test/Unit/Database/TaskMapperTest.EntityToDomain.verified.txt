@@ -1,6 +1,6 @@
 ﻿{
   Id: 1,
-  Titel: Testing Entity Task,
+  Title: Testing Entity Task,
   EntryDate: DateTime_1,
   Estimate: 5.0,
   Priority: MEDIUM,
