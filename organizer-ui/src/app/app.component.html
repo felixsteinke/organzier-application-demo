@@ -8,6 +8,30 @@
 
   <span class="toolbar-spacer"></span>
 
+  <button [matMenuTriggerFor]="menu" mat-icon-button>
+    <mat-icon>format_color_fill</mat-icon>
+  </button>
+
+  <mat-menu #menu="matMenu">
+    <mat-radio-group (ngModelChange)="applyTheme()" [(ngModel)]="uiTheme">
+      <div mat-menu-item>
+        <mat-radio-button [value]="UI_THEMES.PURPLE_AMBER" value="1">Deep Purple & Amber</mat-radio-button>
+      </div>
+      <div mat-menu-item>
+        <mat-radio-button [value]="UI_THEMES.INDIGO_PINK">Indigo & Pink</mat-radio-button>
+      </div>
+      <div mat-menu-item>
+        <mat-radio-button [value]="UI_THEMES.PINK_GREY">Pink & Blue-grey</mat-radio-button>
+      </div>
+      <div mat-menu-item>
+        <mat-radio-button [value]="UI_THEMES.PURPLE_GREEN">Purple & Green</mat-radio-button>
+      </div>
+      <div mat-menu-item>
+        <mat-radio-button [value]="UI_THEMES.CUSTOM_DARK">Custom Dark</mat-radio-button>
+      </div>
+    </mat-radio-group>
+  </mat-menu>
+
   <a class="hyperlink-no-style" href="https://github.com/felixsteinke/organzier-application-demo" target="_blank">
     <button mat-icon-button>
       <mat-icon>developer_mode</mat-icon>

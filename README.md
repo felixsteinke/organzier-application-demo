@@ -157,8 +157,24 @@ the [Google Icons](https://fonts.google.com/icons?icon.set=Material+Icons).
 Add the [material-module.ts](organizer-ui/src/app/material-module.ts) file and import it in
 the [app.module.ts](organizer-ui/src/app/app.module.ts).
 
-For a custom theme it is required to create a [themes.scss](organizer-ui/src/themes.scss) and add it to the `styles` in
-the [angular.json](organizer-ui/angular.json).
+### Dynamic Material Theme
+
+> Full Guide: [Angular Material Theming](https://material.angular.io/guide/theming)
+
+First of all it is required to create a [custom-palette.scss](organizer-ui/src/styles/custom-palette.scss) with the
+required colors for `primary, accent & warn`. Then it is required to define a custom theme like in
+the [material-theme.scss](organizer-ui/src/styles/material-theme.scss). After the import in
+the [styles.scss](organizer-ui/src/styles.scss), the custom theme gets applied.
+
+To make a dynamic theme, it is required to create scoped themes within `css-classes`. These classes can be applied on
+the first level of material style (usually the `<body class="mat-typography mat-app-background">` in
+the [index.html](organizer-ui/src/index.html)):
+
+```js
+document.getElementById('index-body').className = 'my-theme-class mat-typography mat-app-background';
+```
+
+### Material Grid Libraries
 
 For Grids and Tables the [W2UI](http://www.w2ui.com/web/demos/#/grid) dependency can be added to the project:
 
