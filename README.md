@@ -151,6 +151,9 @@ Install the [Angular Material](https://material.angular.io/components) dependenc
 ng add @angular/material@14.2.7
 ```
 
+This will automatically add some imports to the [index.html](organizer-ui/src/index.html) which include
+the [Google Icons](https://fonts.google.com/icons?icon.set=Material+Icons).
+
 Add the [material-module.ts](organizer-ui/src/app/material-module.ts) file and import it in
 the [app.module.ts](organizer-ui/src/app/app.module.ts).
 
