@@ -12,7 +12,7 @@ import {MatSnackBar} from "@angular/material/snack-bar";
 })
 export class TaskItemComponent implements OnInit, OnChanges {
 
-  @Input() taskId = 1;
+  @Input() taskId: number | undefined;
 
   task: Task = {};
   priorityOptions: string[] = [];
@@ -45,13 +45,15 @@ export class TaskItemComponent implements OnInit, OnChanges {
 
   public getTask(): void {
     this.isLoading = true;
-    this.taskService.getTask(this.taskId).subscribe({
-      next: (value) => this.task = value,
-      error: (error) => {
-        console.log(error);
-        OpenErrorDialog(this.matDialog, error.message);
-      }
-    }).add(() => this.isLoading = false);
+    if (this.taskId) {
+      this.taskService.getTask(this.taskId).subscribe({
+        next: (value) => this.task = value,
+        error: (error) => {
+          console.log(error);
+          OpenErrorDialog(this.matDialog, error.message);
+        }
+      }).add(() => this.isLoading = false);
+    }
   }
 
   public addTask(): void {

@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {OpenErrorDialog, OpenSnackBar} from "../../../materials/feedback";
 import {MatDialog} from "@angular/material/dialog";
 import {TaskService} from "../../../services/task.service";
@@ -11,8 +11,10 @@ import {MatSnackBar} from "@angular/material/snack-bar";
 })
 export class TaskTableComponent implements OnInit {
 
-  selectedOption: number = 1;
+  selectedTableOption: number = 1;
   isLoading: boolean = false;
+
+  @Output() selectedTaskId = new EventEmitter<number>();
 
   constructor(private taskService: TaskService,
               private matDialog: MatDialog,
@@ -20,6 +22,10 @@ export class TaskTableComponent implements OnInit {
   }
 
   ngOnInit(): void {
+  }
+
+  public onSelectedTaskId(event: number): void {
+    this.selectedTaskId.emit(event);
   }
 
   public generateTasks(): void {

@@ -1,4 +1,4 @@
-import {AfterViewInit, Component, OnInit, ViewChild} from '@angular/core';
+import {AfterViewInit, Component, EventEmitter, OnInit, Output, ViewChild} from '@angular/core';
 import {MatPaginator} from "@angular/material/paginator";
 import {MatSort} from "@angular/material/sort";
 import {TaskService} from "../../../../services/task.service";
@@ -23,6 +23,8 @@ export class TaskTableV1Component implements OnInit, AfterViewInit {
   // @ts-ignore
   @ViewChild(MatSort) sort: MatSort;
 
+  @Output() selectedTaskId = new EventEmitter<number>();
+
   constructor(private taskService: TaskService,
               private matDialog: MatDialog) {
   }
@@ -46,6 +48,6 @@ export class TaskTableV1Component implements OnInit, AfterViewInit {
   }
 
   public clickRow(row: Task) {
-
+    this.selectedTaskId.emit(row.id);
   }
 }
