@@ -16,6 +16,7 @@ import {TaskTableV3Component} from './components/task/task-table/task-table-v3/t
 import {FormsModule} from "@angular/forms";
 import {FlexModule} from "@angular/flex-layout";
 import {HttpClientModule} from "@angular/common/http";
+import {AgGridModule} from "ag-grid-angular";
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import {HttpClientModule} from "@angular/common/http";
     MaterialModule,
     FormsModule,
     FlexModule,
-    HttpClientModule
+    HttpClientModule,
+    AgGridModule
   ],
   providers: [],
   bootstrap: [AppComponent]

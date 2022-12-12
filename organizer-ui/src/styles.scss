@@ -1,5 +1,8 @@
 /* You can add global styles to this file, and also import other style files */
 @import './styles/material-theme';
+@import 'ag-grid-community/styles/ag-grid.css';
+// always needed
+@import 'ag-grid-community/styles/ag-theme-alpine.css';
 
 html, body {
   height: 100%;

@@ -1,1 +1,14 @@
-<p>task-table-v3 works!</p>
+<button (click)="clearSelection()" mat-raised-button>Clear Selection</button>
+
+<!-- AG Grid Angular Component -->
+<ag-grid-angular
+  (cellClicked)="onCellClicked($event)"
+  (gridReady)="onGridReady($event)"
+  [animateRows]="true"
+  [columnDefs]="columnDefs"
+  [defaultColDef]="defaultColDef"
+  [rowData]="rowData$ | async"
+  [rowSelection]="'multiple'"
+  class="ag-theme-alpine mat-elevation-z8"
+  style="width: 500px; height: 350px;">
+</ag-grid-angular>
