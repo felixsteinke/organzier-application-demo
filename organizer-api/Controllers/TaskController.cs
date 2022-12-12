@@ -55,18 +55,27 @@ namespace organizer_api.Controllers
             return Ok(new MessageModel("Saved 1000 random Task entitites."));
         }
 
-        [HttpGet("")]
-        public ActionResult<TaskModel> GetTask()
+        [HttpPut("")]
+        public ActionResult<TaskModel> PutTask(TaskModel model)
         {
-            _logger.LogInformation("Requesting get Task.");
-            return Ok(_taskMapper.ToDomain(_dbService.SelectTask(1)));
+            _logger.LogInformation("Requesting update Task.");
+            return Ok(_taskMapper.ToDomain(_dbService.UpdateTask(
+                model.Id,
+                model.Done)));
         }
 
-        [HttpDelete("")]
-        public ActionResult<TaskEntity> DeleteTask()
+        [HttpGet("{id}")]
+        public ActionResult<TaskModel> GetTask(long id)
         {
-            _logger.LogInformation("Requesting delete Task.");
-            return Ok(_taskMapper.ToDomain(_dbService.DeleteTask(1)));
+            _logger.LogInformation($"Requesting get Task {id}.");
+            return Ok(_taskMapper.ToDomain(_dbService.SelectTask(id)));
+        }
+
+        [HttpDelete("{id}")]
+        public ActionResult<TaskEntity> DeleteTask(long id)
+        {
+            _logger.LogInformation($"Requesting delete Task for task {id}.");
+            return Ok(_taskMapper.ToDomain(_dbService.DeleteTask(id)));
         }
 
         [HttpGet("all")]
