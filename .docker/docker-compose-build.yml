@@ -8,8 +8,9 @@ services:
       environment:
          - POSTGRES_DB=organizer_db
          - POSTGRES_PASSWORD=password
+         - POSTGRES_USER=hugo
       volumes: 
-         - postgres:/var/lib/postgres
+         - postgres:/var/lib/postgres/data
 
    organizer-service:
       build: ../organizer-api
@@ -19,7 +20,10 @@ services:
       depends_on:
          - postgres-service
       environment: 
-         - ConnectionStrings__PostgresDB="Host=postgres-service:5432;Database=organizer_db;Username=postgres;Password=password"
+         - PostgresDB__Host="postgres-service:5432" 
+         - PostgresDB__Database=organizer_db 
+         - PostgresDB__Username=hugo 
+         - PostgresDB__Password=password 
       expose:
          - 80
       ports:
