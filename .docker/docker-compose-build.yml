@@ -1,33 +1,44 @@
 version: '3'
 
 services:
-   postgres-service:
+
+   organizer-postgres-service:
       image: postgres:15.1-alpine
-      container_name: postgress-db
+      container_name: organizer-postgres
       restart: always
       environment:
          - POSTGRES_DB=organizer_db
-         - POSTGRES_PASSWORD=password
          - POSTGRES_USER=hugo
-      volumes: 
-         - postgres:/var/lib/postgres/data
+         - POSTGRES_PASSWORD=password
+      volumes:
+         - db-data:/var/lib/postgresql/data
 
-   organizer-service:
+   organizer-api-service:
       build: ../organizer-api
-      image: ghcr.io/felixsteinke/organzier-application-demo:local
-      container_name: organizer-api
+      image: ghcr.io/felixsteinke/organzier-application-demo-api:build
+      container_name: organizer-api-build
       restart: always
       depends_on:
-         - postgres-service
-      environment: 
-         - PostgresDB__Host="postgres-service:5432" 
-         - PostgresDB__Database=organizer_db 
-         - PostgresDB__Username=hugo 
-         - PostgresDB__Password=password 
-      expose:
-         - 80
+         - organizer-postgres-service
+      environment:
+         - PostgresDB__Host=organizer-postgres-service:5432
+         - PostgresDB__Database=organizer_db
+         - PostgresDB__Username=hugo
+         - PostgresDB__Password=password
+      ports:
+         - "8088:80"
+
+   organizer-ui-service:
+      build: ../organizer-ui
+      image: ghcr.io/felixsteinke/organzier-application-demo-ui:build
+      container_name: organizer-ui-build
+      restart: always
+      depends_on:
+         - organizer-api-service
+      environment:
+         - BACKEND_API_HOST=http://host.docker.internal:8088
       ports:
          - "8080:80"
 
-volumes: 
-   postgres:
+volumes:
+   db-data:

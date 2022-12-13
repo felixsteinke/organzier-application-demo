@@ -4,7 +4,10 @@
 
 export const environment = {
   production: false,
-  backendApiHost: 'http://localhost:5183'
+  // @ts-ignore https://pumpingco.de/blog/environment-variables-angular-docker/
+  backendApiHost: window["env"]["backendApiHost"] || "http://localhost:5183",
+  // @ts-ignore
+  debug: window["env"]["debug"] || false
 };
 
 /*
