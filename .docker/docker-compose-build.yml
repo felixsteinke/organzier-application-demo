@@ -6,8 +6,9 @@ services:
       container_name: postgress-db
       restart: always
       environment:
-         - POSTGRES_DB="organizer_db"
-         - POSTGRES_PASSWORD="SecretPassword"
+         - POSTGRES_DB=organizer_db
+         - POSTGRES_PASSWORD=password
+         - POSTGRES_USER=hugo
       volumes: 
          - postgres:/var/lib/postgres/data
 
@@ -20,9 +21,9 @@ services:
          - postgres-service
       environment: 
          - PostgresDB__Host="postgres-service:5432" 
-         - PostgresDB__Database="organizer_db" 
-         - PostgresDB__Username="postgres" 
-         - PostgresDB__Password="SecretPassword" 
+         - PostgresDB__Database=organizer_db 
+         - PostgresDB__Username=hugo 
+         - PostgresDB__Password=password 
       expose:
          - 80
       ports:
