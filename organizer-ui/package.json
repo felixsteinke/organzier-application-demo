@@ -25,7 +25,6 @@
     "ag-grid-community": "^28.2.1",
     "rxjs": "~7.5.0",
     "tslib": "^2.3.0",
-    "w2ui": "^1.5.3",
     "zone.js": "~0.11.4"
   },
   "devDependencies": {
