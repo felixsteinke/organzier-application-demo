@@ -18,7 +18,9 @@ jobs:
       - name: Build the Docker image
         run: |
           cd ./organizer-api
-          docker build --tag ghcr.io/${{ github.repository }}:latest .
+          docker build --tag ghcr.io/${{ github.repository }}-api:latest .
+          cd ../organizer-ui
+          docker build --tag ghcr.io/${{ github.repository }}-ui:latest .
 
       - name: Log in to Package Registry
         run: echo "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io -u ${{ github.actor }} --password-stdin

@@ -1,6 +1,13 @@
 version: '3'
 
 services:
+   ui-service:
+      image: ghcr.io/felixsteinke/organzier-application-demo-ui:latest
+      container_name: organizer-ui
+      restart: always
+      ports:
+         - "80:80"
+
    postgres-service:
       image: postgres:15.1-alpine
       container_name: postgress-db
@@ -13,7 +20,7 @@ services:
          - db-data:/var/lib/postgresql/data
 
    organizer-service:
-      image: ghcr.io/felixsteinke/organzier-application-demo:latest
+      image: ghcr.io/felixsteinke/organzier-application-demo-api:latest
       container_name: organizer-api
       restart: always
       depends_on:
