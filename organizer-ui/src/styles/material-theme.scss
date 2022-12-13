@@ -3,6 +3,14 @@
 
 @include mat.core();
 
+// custom font
+@font-face {
+  font-family: "timeburner-bold";
+  font-style: normal;
+  font-weight: 400;
+  src: url("../assets/fonts/timeburner/TimeburnerBold-peGR.ttf") format("truetype")
+}
+
 // info: https://material.angular.io/guide/theming
 
 $custom-dark-theme: mat.define-dark-theme((
@@ -11,7 +19,9 @@ $custom-dark-theme: mat.define-dark-theme((
     accent: mat.define-palette(custom.$accent-palette),
     warn: mat.define-palette(custom.$warn-palette),
   ),
-  typography: mat.define-typography-config(),
+  typography: mat.define-typography-config(
+    $font-family: "timeburner-bold"
+  ),
   density: 0,
 ));
 @include mat.all-component-themes($custom-dark-theme);
@@ -29,7 +39,9 @@ $custom-dark-theme: mat.define-dark-theme((
       accent: mat.define-palette(custom.$accent-palette),
       warn: mat.define-palette(custom.$warn-palette),
     ),
-    typography: mat.define-typography-config(),
+    typography: mat.define-typography-config(
+      $font-family: "timeburner-bold"
+    ),
     density: 0,
   ));
   @include mat.all-component-themes($custom-light-theme);
