@@ -3,9 +3,8 @@
     <mat-form-field appearance="outline">
       <mat-label>Choose Table Library</mat-label>
       <mat-select [(ngModel)]="selectedTableOption">
-        <mat-option [value]="1">Angular Material</mat-option>
-        <mat-option [value]="2">W2 UI</mat-option>
-        <mat-option [value]="3">Option 3</mat-option>
+        <mat-option [value]="TABLE_LAYOUTS.MATERIAL">Angular Material</mat-option>
+        <mat-option [value]="TABLE_LAYOUTS.AG_GRID">AG Grid</mat-option>
       </mat-select>
     </mat-form-field>
 
@@ -18,8 +17,8 @@
 
   <div id="task-table-container">
     <app-task-table-v1 (selectedTaskId)="onSelectedTaskId($event)"
-                       *ngIf="selectedTableOption === 1"></app-task-table-v1>
-    <app-task-table-v2 *ngIf="selectedTableOption === 2"></app-task-table-v2>
-    <app-task-table-v3 *ngIf="selectedTableOption === 3"></app-task-table-v3>
+                       *ngIf="selectedTableOption === TABLE_LAYOUTS.MATERIAL"></app-task-table-v1>
+    <app-task-table-v2 (selectedTaskId)="onSelectedTaskId($event)"
+                       *ngIf="selectedTableOption === TABLE_LAYOUTS.AG_GRID"></app-task-table-v2>
   </div>
 </div>

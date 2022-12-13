@@ -12,10 +12,10 @@ import {TaskTableComponent} from './components/task/task-table/task-table.compon
 import {TaskItemComponent} from './components/task/task-item/task-item.component';
 import {TaskTableV1Component} from './components/task/task-table/task-table-v1/task-table-v1.component';
 import {TaskTableV2Component} from './components/task/task-table/task-table-v2/task-table-v2.component';
-import {TaskTableV3Component} from './components/task/task-table/task-table-v3/task-table-v3.component';
 import {FormsModule} from "@angular/forms";
 import {FlexModule} from "@angular/flex-layout";
 import {HttpClientModule} from "@angular/common/http";
+import {AgGridModule} from "ag-grid-angular";
 
 @NgModule({
   declarations: [
@@ -26,8 +26,7 @@ import {HttpClientModule} from "@angular/common/http";
     TaskTableComponent,
     TaskItemComponent,
     TaskTableV1Component,
-    TaskTableV2Component,
-    TaskTableV3Component
+    TaskTableV2Component
   ],
   imports: [
     BrowserModule,
@@ -36,7 +35,8 @@ import {HttpClientModule} from "@angular/common/http";
     MaterialModule,
     FormsModule,
     FlexModule,
-    HttpClientModule
+    HttpClientModule,
+    AgGridModule
   ],
   providers: [],
   bootstrap: [AppComponent]

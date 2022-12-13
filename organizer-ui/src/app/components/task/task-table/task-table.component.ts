@@ -3,6 +3,7 @@ import {OpenErrorDialog, OpenSnackBar} from "../../../materials/feedback";
 import {MatDialog} from "@angular/material/dialog";
 import {TaskService} from "../../../services/task.service";
 import {MatSnackBar} from "@angular/material/snack-bar";
+import {Table} from "../../../enums/table";
 
 @Component({
   selector: 'app-task-table',
@@ -11,7 +12,8 @@ import {MatSnackBar} from "@angular/material/snack-bar";
 })
 export class TaskTableComponent implements OnInit {
 
-  selectedTableOption: number = 1;
+  TABLE_LAYOUTS = Table;
+  selectedTableOption: Table = Table.MATERIAL;
   isLoading: boolean = false;
 
   @Output() selectedTaskId = new EventEmitter<number>();
