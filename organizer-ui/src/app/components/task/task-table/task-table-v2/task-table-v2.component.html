@@ -1,4 +1,4 @@
-<div class="mat-elevation-z8" fxLayout="column" fxLayoutAlign="start end" id="task-table-v2-root">
+<div fxLayout="column" fxLayoutAlign="start end" id="task-table-v2-root">
   <button (click)="clearSelection()" mat-raised-button>Clear Selection</button>
 
   <!-- AG Grid Angular Component -->
@@ -10,7 +10,7 @@
     [defaultColDef]="defaultColDef"
     [rowData]="rowData$ | async"
     [rowSelection]="'multiple'"
-    class="ag-theme-alpine"
+    class="ag-theme-alpine mat-elevation-z8"
     id="ag-grid-table">
   </ag-grid-angular>
 </div>
