@@ -3,5 +3,6 @@ export enum Theme {
   INDIGO_PINK = 'indigo-pink-theme',
   PINK_GREY = 'pink-grey-theme',
   PURPLE_GREEN = 'purple-green-theme',
-  CUSTOM_DARK = 'custom-dark-theme'
+  CUSTOM_DARK = 'custom-dark-theme',
+  CUSTOM_LIGHT = 'custom-light-theme'
 }

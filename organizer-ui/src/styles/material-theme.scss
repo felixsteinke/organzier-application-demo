@@ -22,6 +22,19 @@ $custom-dark-theme: mat.define-dark-theme((
   @include mat.all-component-themes($custom-dark-theme);
 }
 
+.custom-light-theme {
+  $custom-light-theme: mat.define-light-theme((
+    color: (
+      primary: mat.define-palette(custom.$primary-palette),
+      accent: mat.define-palette(custom.$accent-palette),
+      warn: mat.define-palette(custom.$warn-palette),
+    ),
+    typography: mat.define-typography-config(),
+    density: 0,
+  ));
+  @include mat.all-component-themes($custom-light-theme);
+}
+
 .purple-amber-theme {
   $purple-amber-theme: mat.define-light-theme((
     color: (
