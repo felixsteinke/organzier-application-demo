@@ -24,6 +24,8 @@ services:
       - PostgresDB__Database=organizer_db
       - PostgresDB__Username=hugo
       - PostgresDB__Password=password
+    ports:
+      - "8088:80"
 
   organizer-ui-service:
     image: ghcr.io/felixsteinke/organzier-application-demo-ui:latest

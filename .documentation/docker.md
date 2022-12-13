@@ -1,5 +1,7 @@
 # Docker
 
+> Prerequisite: [Docker Desktop](https://www.docker.com/products/docker-desktop/)
+
 __(Commands are based on repository root)__
 
 ## 1. Run Application Stack
