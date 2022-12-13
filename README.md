@@ -176,17 +176,7 @@ document.getElementById('index-body').className = 'my-theme-class mat-typography
 
 ### Material Grid Libraries
 
-For Grids and Tables the [W2UI](http://www.w2ui.com/web/demos/#/grid) dependency can be added to the project:
-
-```shell
-ng add w2ui
-```
-
-To make the JS-Library accessible, it is required to add following properties to
-the [angular.json](organizer-ui/angular.json):
-
-* `./node_modules/w2ui/w2ui.min.js` to the `scripts`
-* `./node_modules/w2ui/w2ui.min.css` to the `styles`
+> TODO: AG Grid
 
 ### Flex Layout
 
