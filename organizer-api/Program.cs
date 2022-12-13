@@ -26,7 +26,8 @@ namespace organizer_api
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
             // Setup database connection
-            builder.Services.AddDbContext<TaskRepository>(opt => opt.UseNpgsql(builder.Configuration.GetConnectionString("PostgresDB")));
+            var connectionString = $"Host={builder.Configuration["PostgresDB:Host"]};Database={builder.Configuration["PostgresDB:Database"]};Username={builder.Configuration["PostgresDB:Username"]};Password={builder.Configuration["PostgresDB:Password"]};";
+            builder.Services.AddDbContext<TaskRepository>(opt => opt.UseNpgsql(connectionString));
             // Setup service dependency injection
             builder.Services.AddScoped<IDatabaseService, DatabaseService>();
 
