@@ -7,7 +7,7 @@ services:
       restart: always
       environment:
          - POSTGRES_DB="organizer_db"
-         - POSTGRES_PASSWORD="password"
+         - POSTGRES_PASSWORD="SecretPassword"
       volumes: 
          - postgres:/var/lib/postgres/data
 
