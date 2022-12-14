@@ -18,4 +18,8 @@ export class HomeComponent implements OnInit {
   public navigateToTasks(): void {
     this.router.navigate([APP_ROUTES.TASK.path]);
   }
+
+  public navigateToCalendar(): void {
+    this.router.navigate([APP_ROUTES.CALENDAR.path]);
+  }
 }

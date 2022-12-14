@@ -1,1 +1,79 @@
-<p>calendar-picker works!</p>
+<div id="calender-picker-root">
+
+  <div id="calendar-picker-grid">
+    <mat-calendar [(selected)]="selected" [maxDate]="maxDate" [minDate]="minDate" id="day-grid-area">
+    </mat-calendar>
+
+    <table id="month-grid-area">
+      <tr>
+        <td>
+          <button mat-stroked-button matBadge="0" matBadgeColor="accent" matBadgeSize="large">
+            JAN
+          </button>
+        </td>
+        <td>
+          <button mat-stroked-button matBadge="0" matBadgeColor="accent" matBadgeSize="large">
+            FEB
+          </button>
+        </td>
+        <td>
+          <button mat-stroked-button matBadge="0" matBadgeColor="accent" matBadgeSize="large">
+            MAR
+          </button>
+        </td>
+        <td>
+          <button mat-stroked-button matBadge="0" matBadgeColor="accent" matBadgeSize="large">
+            APR
+          </button>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <button mat-stroked-button matBadge="0" matBadgeColor="accent" matBadgeSize="large">
+            MAY
+          </button>
+        </td>
+        <td>
+          <button mat-stroked-button matBadge="0" matBadgeColor="accent" matBadgeSize="large">
+            JUN
+          </button>
+        </td>
+        <td>
+          <button mat-stroked-button matBadge="0" matBadgeColor="accent" matBadgeSize="large">
+            JUL
+          </button>
+        </td>
+        <td>
+          <button mat-stroked-button matBadge="0" matBadgeColor="accent" matBadgeSize="large">
+            AUG
+          </button>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <button mat-stroked-button matBadge="0" matBadgeColor="accent" matBadgeSize="large">
+            SEP
+          </button>
+        </td>
+        <td>
+          <button mat-stroked-button matBadge="0" matBadgeColor="accent" matBadgeSize="large">
+            OCT
+          </button>
+        </td>
+        <td>
+          <button mat-stroked-button matBadge="0" matBadgeColor="accent" matBadgeSize="large">
+            NOV
+          </button>
+        </td>
+        <td>
+          <button mat-stroked-button matBadge="0" matBadgeColor="accent" matBadgeSize="large">
+            DEC
+          </button>
+        </td>
+      </tr>
+    </table>
+  </div>
+</div>
+
+
+

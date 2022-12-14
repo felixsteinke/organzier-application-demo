@@ -1,1 +1,47 @@
-<p>calendar works!</p>
+<div id="calender-view-root">
+
+  <div id="calendar-grid">
+    <div id="picker-grid-area">
+      <app-calendar-picker [year]="this.calendar.year"></app-calendar-picker>
+    </div>
+
+    <div id="item-grid-area">
+      <mat-card class="calendar-meta-data" fxLayout="column" fxLayoutAlign="start center">
+        <mat-card-title>Calendar {{calendar.id}}</mat-card-title>
+        <!-- IDENTIFIER: CALENDAR YEAR -->
+        <mat-form-field appearance="outline">
+          <mat-label>Year</mat-label>
+          <input [formControl]="yearPicker" [matDatepicker]="dp" matInput>
+          <mat-datepicker-toggle [for]="dp" matSuffix></mat-datepicker-toggle>
+          <mat-datepicker #dp (yearSelected)="updateYearPickerValue($event, dp)"
+                          startView="multi-year">
+          </mat-datepicker>
+        </mat-form-field>
+        <!-- IDENTIFIER: CALENDAR COUNTRY -->
+        <mat-form-field appearance="outline">
+          <mat-label>Country</mat-label>
+          <input matInput>
+        </mat-form-field>
+        <!-- IDENTIFIER: CALENDAR REGION -->
+        <mat-form-field appearance="outline">
+          <mat-label>Region</mat-label>
+          <input matInput>
+        </mat-form-field>
+        <!-- IDENTIFIER: CALENDAR BUILDING -->
+        <mat-form-field appearance="outline">
+          <mat-label>Building</mat-label>
+          <input matInput>
+        </mat-form-field>
+        <!-- DESCRIPTOR: CALENDAR NAME -->
+        <mat-form-field appearance="outline">
+          <mat-label>Calendar Name</mat-label>
+          <input matInput>
+        </mat-form-field>
+      </mat-card>
+
+      <app-calendar-item [(calendarType)]="calendarType" [(dayType)]="dayType" [(description)]="description"
+                         [(name)]="name" [date]="selectedDate">
+      </app-calendar-item>
+    </div>
+  </div>
+</div>
