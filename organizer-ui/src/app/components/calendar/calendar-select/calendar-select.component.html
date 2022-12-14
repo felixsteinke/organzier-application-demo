@@ -1,0 +1,44 @@
+<div fxLayout="column" fxLayoutAlign="start center" id="calendar-select-root">
+  <mat-card fxLayout="column" fxLayoutAlign="start start" id="calendar-select-data-form">
+
+    <mat-card-title>
+      Calendar {{id}}
+    </mat-card-title>
+
+    <!-- IDENTIFIER: CALENDAR YEAR -->
+    <mat-form-field appearance="outline">
+      <mat-label>Year</mat-label>
+      <input [formControl]="yearPicker" [matDatepicker]="dp" matInput>
+      <mat-datepicker-toggle [for]="dp" matSuffix></mat-datepicker-toggle>
+      <mat-datepicker #dp (yearSelected)="emitYearValue($event, dp)"
+                      startView="multi-year">
+      </mat-datepicker>
+
+    </mat-form-field>
+
+    <!-- IDENTIFIER: CALENDAR COUNTRY -->
+    <mat-form-field appearance="outline">
+      <mat-label>Country</mat-label>
+      <input (change)="emitCountry()" [(ngModel)]="country" matInput>
+    </mat-form-field>
+
+    <!-- IDENTIFIER: CALENDAR REGION -->
+    <mat-form-field appearance="outline">
+      <mat-label>Region</mat-label>
+      <input (change)="emitRegion()" [(ngModel)]="region" matInput>
+    </mat-form-field>
+
+    <!-- IDENTIFIER: CALENDAR BUILDING -->
+    <mat-form-field appearance="outline">
+      <mat-label>Building</mat-label>
+      <input (change)="emitBuilding()" [(ngModel)]="building" matInput>
+    </mat-form-field>
+
+    <!-- DESCRIPTOR: CALENDAR NAME -->
+    <mat-form-field appearance="outline">
+      <mat-label>Calendar Name</mat-label>
+      <input (change)="emitName()" [(ngModel)]="name" matInput>
+    </mat-form-field>
+
+  </mat-card>
+</div>

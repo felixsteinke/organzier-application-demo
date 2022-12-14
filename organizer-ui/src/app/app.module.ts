@@ -19,6 +19,7 @@ import {AgGridModule} from "ag-grid-angular";
 import {CalendarComponent} from './views/calendar/calendar.component';
 import {CalendarPickerComponent} from './components/calendar/calendar-picker/calendar-picker.component';
 import {CalendarItemComponent} from './components/calendar/calendar-item/calendar-item.component';
+import {CalendarSelectComponent} from './components/calendar/calendar-select/calendar-select.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import {CalendarItemComponent} from './components/calendar/calendar-item/calenda
     TaskTableV2Component,
     CalendarComponent,
     CalendarPickerComponent,
-    CalendarItemComponent
+    CalendarItemComponent,
+    CalendarSelectComponent
   ],
   imports: [
     BrowserModule,

@@ -10,7 +10,7 @@
 
     <mat-form-field appearance="outline">
       <mat-label>Calendar Type</mat-label>
-      <mat-select [(ngModel)]="calendarType">
+      <mat-select (change)="emitCalendarType()" [(ngModel)]="calendarType">
         <mat-option *ngFor="let cType of calendarTypeOptions" [value]="cType">
           {{cType}}
         </mat-option>
@@ -19,17 +19,17 @@
 
     <mat-form-field appearance="outline">
       <mat-label>Name</mat-label>
-      <input [(ngModel)]="name" matInput>
+      <input (change)="emitName()" [(ngModel)]="name" matInput>
     </mat-form-field>
 
     <mat-form-field appearance="outline">
       <mat-label>Description</mat-label>
-      <textarea [(ngModel)]="description" matInput rows="3"></textarea>
+      <textarea (change)="emitDescription()" [(ngModel)]="description" matInput rows="3"></textarea>
     </mat-form-field>
 
     <mat-form-field appearance="outline">
       <mat-label>Day Type</mat-label>
-      <mat-select [(ngModel)]="dayType">
+      <mat-select (change)="emitDayType()" [(ngModel)]="dayType">
         <mat-option *ngFor="let dType of dayTypeOptions" [value]="dType"
                     matTooltip="{{dType.isBilling ? 'Billable' : 'Not Billable'}}"
                     matTooltipPosition="left" matTooltipShowDelay="500">
