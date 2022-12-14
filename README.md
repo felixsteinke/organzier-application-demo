@@ -10,6 +10,7 @@ entrypoint for users into the system.
 
 The entire system will be deployed on a PaaS Cloud with docker compose via GitHub Actions.
 
+* [Development Tools](.documentation/dev-tools.md)
 * [Docker Documentation](.documentation/docker.md)
 * [Configuration Documentation](./.documentation/configuration.md)
 * [.NET Testing Documentation](.documentation/dotnet-testing.md)
@@ -39,14 +40,6 @@ root
 ```
 
 ## API
-
-### Development Tools
-
-* [Visual Studio 2022](https://visualstudio.microsoft.com/de/downloads/)
-  * .NET 7 (selectable in the installer)
-  * ASP.NET Application Development
-  * [NuGet Source Configuration](https://learn.microsoft.com/en-us/azure/devops/artifacts/nuget/upstream-sources?view=azure-devops#add-nuget-gallery-upstream-source)
-* [Docker Desktop](https://www.docker.com/products/docker-desktop/)
 
 ### EntityFramework & Database
 
@@ -80,13 +73,6 @@ application will apply the Migration on startup. This means everything should be
 ## UI
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.1.1.
-
-### Development Tools
-
-* [NodeJS](https://nodejs.org/en/download/)
-  * Angular CLI 14.1.1: `npm install -g @angular/cli@14.1.1`
-* [Docker Desktop](https://www.docker.com/products/docker-desktop/)
-* Optional: [IntelliJ IDEA](https://www.jetbrains.com/idea/download)
 
 ### Angular CLI
 
