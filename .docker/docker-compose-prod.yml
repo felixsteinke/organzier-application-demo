@@ -12,6 +12,8 @@ services:
          - POSTGRES_PASSWORD=password
       volumes:
          - db-data:/var/lib/postgresql/data
+      networks:
+         - system-bridge
 
    organizer-api-service:
       image: ghcr.io/felixsteinke/organzier-application-demo-api:latest
@@ -24,6 +26,8 @@ services:
          - PostgresDB__Database=organizer_db
          - PostgresDB__Username=hugo
          - PostgresDB__Password=password
+      networks:
+         - system-bridge
       ports:
          - "7104:80"
 
@@ -35,8 +39,14 @@ services:
          - organizer-api-service
       environment:
          - BACKEND_API_HOST=host.docker.internal:7104
+      networks:
+         - system-bridge
       ports:
          - "80:80"
 
 volumes:
    db-data:
+
+networks:
+   system-bridge:
+      driver: bridge
