@@ -25,7 +25,7 @@ services:
          - PostgresDB__Username=hugo
          - PostgresDB__Password=password
       ports:
-         - "8088:80"
+         - "7104:80"
 
    organizer-ui-service:
       image: ghcr.io/felixsteinke/organzier-application-demo-ui:latest
@@ -34,7 +34,7 @@ services:
       depends_on:
          - organizer-api-service
       environment:
-         - BACKEND_API_HOST=http://host.docker.internal:8088
+         - BACKEND_API_HOST=http://host.docker.internal:7104
       ports:
          - "80:80"
 
