@@ -10,6 +10,10 @@ entrypoint for users into the system.
 
 The entire system will be deployed on a PaaS Cloud with docker compose via GitHub Actions.
 
+* [Docker Documentation](.documentation/docker.md)
+* [.NET Testing Documentation](.documentation/dotnet-testing.md)
+* [Material UI Documentation](.documentation/material-ui.md)
+
 ```
 root
  |_ .docker			--> docker compose files to run the entire system
@@ -72,69 +76,9 @@ __Behaviour in Production:__
 In production the database container will be started with the docker compose and if there is no existing volume, the
 application will apply the Migration on startup. This means everything should be automated.
 
-### Unit Testing
-
-For the unit tests, the testing framework `XUnit` is used because it has the highest isolation. Unit tests should run
-completely isolated and fast. Therefore, the unit under test are completely isolated. For example when testing
-a `Service` with the dependency to a `DbContext`, it is required to mock the dependency with the `Moq`-Library.
-
-These tests are run by the GitHub Action for Continuous Integration (CI).
-
-__Tutorials:__
-
-* [Verify Library (GitHub)](https://github.com/VerifyTests/Verify)
-* [WinMerge for Verify Comparison (Installer)](https://winmerge.org/?lang=en)
-* [Verify Overview Video (YT)](https://www.youtube.com/watch?v=wA7oJDyvn4c&ab_channel=%E2%80%A4NETOxford)
-
-### Integration Testing
-
-For the integration tests, the testing framework `XUnit` is used as well. They also should be highly isolated and fast.
-The difference to unit tests is the preparation of the unit under test. In the integration test, the entire application
-is started up in the test and several `Testcontainers` will be available and isolated within the test.
-
-To make the verification easier, the `Verify`-Library is used to make snapshots of verified results.
-
-These tests are run by the GitHub Action for Continuous Integration (CI) in combination with the Unit Tests.
-
-__Tutorials:__
-
-* [General Web App Testing](https://learn.microsoft.com/en-us/dotnet/architecture/microservices/multi-container-microservice-net-applications/test-aspnet-core-services-web-apps)
-* [Program.cs accessible to TestServer](https://learn.microsoft.com/en-us/aspnet/core/test/integration-tests?view=aspnetcore-7.0#basic-tests-with-the-default-webapplicationfactory)
-* [WebApplicationFactory as Wrapper for TestServer](https://stackoverflow.com/questions/69897652/how-do-you-create-a-test-server-in-net-6)
-* [Testcontainer Library](https://dotnet.testcontainers.org/)
-* [Tutorial for Testcontainer in Java (YT)](https://www.youtube.com/watch?v=9fzn0j1jbiQ&t=1148s&ab_channel=SebastianDaschner)
-
-### E2E Testing
-
-End-To-End Testing is more complex than Unit and Integration Testing. It takes the finished container und starts up the
-entire system within an isolated test environment.
-
-To execute User-Actions on the UI, the `Playwright`-Library is used. This library is mostly supported within the testing
-framework `NUnit` and therefore it is used for this project.
-
-The results on the UI can be verified with `Assert` and `Playwright` as well. To have the least effort with the
-tests, `Verify` can be used on top of `Playwright`.
-
-The least effort is to generate tests with the `Playwright Code Generator` and then `Verify` is used on the page. It
-verifies the full `html & png of the page`.
-
-> Disclaimer: This is still work in progress und not fully functional yet!
-
-__Tutorials:__
-
-* [Playwright UI Automation](https://playwright.dev/)
-* [Playwright Code Generator](https://playwright.dev/docs/codegen)
-
 ## UI
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.1.1.
-
-__UI Container:__
-
-* Run `docker build -t organizer-ui .` to build the image with docker.
-* Run `docker run -d -p 4200:80 --name organizer-ui organizer-ui` to run the container with docker.
-
-> Disclaimer: Current Dockerfile does not build the project automatically.
 
 ### Development Tools
 
@@ -142,49 +86,6 @@ __UI Container:__
   * Angular CLI 14.1.1: `npm install -g @angular/cli@14.1.1`
 * [Docker Desktop](https://www.docker.com/products/docker-desktop/)
 * Optional: [IntelliJ IDEA](https://www.jetbrains.com/idea/download)
-
-### Material UI
-
-Install the [Angular Material](https://material.angular.io/components) dependency to the project:
-
-```shell
-ng add @angular/material@14.2.7
-```
-
-This will automatically add some imports to the [index.html](organizer-ui/src/index.html) which include
-the [Google Icons](https://fonts.google.com/icons?icon.set=Material+Icons).
-
-Add the [material-module.ts](organizer-ui/src/app/material-module.ts) file and import it in
-the [app.module.ts](organizer-ui/src/app/app.module.ts).
-
-### Dynamic Material Theme
-
-> Full Guide: [Angular Material Theming](https://material.angular.io/guide/theming)
-
-First of all it is required to create a [custom-palette.scss](organizer-ui/src/styles/custom-palette.scss) with the
-required colors for `primary, accent & warn`. Then it is required to define a custom theme like in
-the [material-theme.scss](organizer-ui/src/styles/material-theme.scss). After the import in
-the [styles.scss](organizer-ui/src/styles.scss), the custom theme gets applied.
-
-To make a dynamic theme, it is required to create scoped themes within `css-classes`. These classes can be applied on
-the first level of material style (usually the `<body class="mat-typography mat-app-background">` in
-the [index.html](organizer-ui/src/index.html)):
-
-```js
-document.getElementById('index-body').className = 'my-theme-class mat-typography mat-app-background';
-```
-
-### Material Grid Libraries
-
-> TODO: AG Grid
-
-### Flex Layout
-
-To structure the layout, the [Angular FlexLayout](https://github.com/angular/flex-layout) is used. It helps to align
-content easily and is defined in the HTML. To not cluster too many tags into the HTML, most of the time only `<div>`s
-have an applied layout.
-
-Get more information on the [Demo Page](https://tburleson-layouts-demos.firebaseapp.com/#/docs).
 
 ### Angular CLI
 
