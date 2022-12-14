@@ -38,7 +38,7 @@ services:
       depends_on:
          - organizer-api-service
       environment:
-         - BACKEND_API_HOST=host.docker.internal:7104
+         - BACKEND_API_HOST=http://host.docker.internal:7104
       networks:
          - system-bridge
       ports:
