@@ -11,6 +11,7 @@ entrypoint for users into the system.
 The entire system will be deployed on a PaaS Cloud with docker compose via GitHub Actions.
 
 * [Docker Documentation](.documentation/docker.md)
+* [Configuration Documentation](./.documentation/configuration.md)
 * [.NET Testing Documentation](.documentation/dotnet-testing.md)
 * [Material UI Documentation](.documentation/material-ui.md)
 

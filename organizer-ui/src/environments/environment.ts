@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  // @ts-ignore https://pumpingco.de/blog/environment-variables-angular-docker/
+  // @ts-ignore
   backendApiHost: window["env"]["backendApiHost"] || "http://localhost:5183",
   // @ts-ignore
   debug: window["env"]["debug"] || false
