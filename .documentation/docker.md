@@ -8,6 +8,8 @@ __(Commands are based on repository root)__
 
 ### 1.1. Run by building the current code
 
+__Usage:__ Local deployment of development images
+
 [docker-compose-prod.yml](../.docker/docker-compose-build.yml)
 
 ```shell
@@ -17,18 +19,9 @@ docker compose --file .docker/docker-compose-build.yml up --build
 * UI: [http://localhost:8080](http://localhost:8080)
 * API: [http://localhost:8088/swagger/index.html](http://localhost:8088/swagger/index.html)
 
-### 1.2. Run with GitHub Packages (Port 80)
+### 1.2. Run with GitHub Packages (Port 8080)
 
-[docker-compose-prod.yml](../.docker/docker-compose-prod.yml)
-
-```shell
-docker compose --file .docker/docker-compose-prod.yml up
-```
-
-* UI: [http://localhost:80](http://localhost:80)
-* API: [http://localhost:7104/swagger/index.html](http://localhost:7104/swagger/index.html)
-
-### 1.3. Run with GitHub Packages (Port 8080)
+__Usage:__ Local deployment of production images
 
 [docker-compose.yml](../.docker/docker-compose.yml)
 
@@ -42,6 +35,19 @@ docker compose up
 
 * UI: [http://localhost:8080](http://localhost:8080)
 * API: [http://localhost:8088/swagger/index.html](http://localhost:8088/swagger/index.html)
+
+### 1.3. Run with GitHub Packages (Port 80)
+
+__Usage:__ PaaS deployment of production images
+
+[docker-compose-prod.yml](../.docker/docker-compose-prod.yml)
+
+```shell
+docker compose --file .docker/docker-compose-prod.yml up
+```
+
+* UI: [http://localhost:80](http://localhost:80)
+* API: [http://localhost:7104/swagger/index.html](http://localhost:7104/swagger/index.html)
 
 ## 2. Build & Run single Containers
 

@@ -54,8 +54,12 @@ the [Dockerfile](../organizer-ui/Dockerfile) to inject the environment on the co
 
 > Full Guide: [Pumping Code Blog](https://pumpingco.de/blog/environment-variables-angular-docker/)
 
+__Note:__ The internal `docker-network` and `host.docker.internal` could not be resolved in the production environment!
+Some more investigation is required to fully understand this behaviour. The fix is to adjust the `ui-environment` to
+available URLs.
+
 ### 2.1. Specific UI Environment
 
-| Key              |         Default         | Examples                                                    | Description                               |
-|:-----------------|:-----------------------:|:------------------------------------------------------------|:------------------------------------------|
-| BACKEND_API_HOST | `http://localhost:5183` | `http://localhost:8080`, `http://host.docker.internal:8080` | host for backend api (no `/` at the end!) |
+| Key              |         Default         | Examples                                                                                 | Description                               |
+|:-----------------|:-----------------------:|:-----------------------------------------------------------------------------------------|:------------------------------------------|
+| BACKEND_API_HOST | `http://localhost:5183` | `http://localhost:8080`, `http://host.docker.internal:8080`, `http://193.196.54.73:7104` | host for backend api (no `/` at the end!) |
