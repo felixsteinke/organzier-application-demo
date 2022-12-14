@@ -26,7 +26,7 @@ docker compose --file .docker/docker-compose-prod.yml up
 ```
 
 * UI: [http://localhost:80](http://localhost:80)
-* API: [http://localhost:8080/swagger/index.html](http://localhost:8080/swagger/index.html)
+* API: [http://localhost:8088/swagger/index.html](http://localhost:8088/swagger/index.html)
 
 ### 1.3. Run with GitHub Packages (Port 8080)
 
