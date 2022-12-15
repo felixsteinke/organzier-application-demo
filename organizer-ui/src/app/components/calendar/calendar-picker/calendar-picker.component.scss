@@ -1,0 +1,17 @@
+#calender-picker-root {
+
+}
+
+#calendar-picker-data-card {
+
+  .month-select-btn {
+    margin: 10px;
+    width: calc(100% - 20px);
+    aspect-ratio: 1 / 1;
+  }
+
+  mat-calendar {
+    width: 100%;
+    max-width: 540px;
+  }
+}

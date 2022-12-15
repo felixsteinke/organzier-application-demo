@@ -25,7 +25,7 @@ $custom-dark-theme: mat.define-dark-theme((
     accent: mat.define-palette(custom.$accent-palette),
     warn: mat.define-palette(custom.$warn-palette),
   ),
-  typography: $custom-typography-config,
+  typography: $default-typography-config,
   density: $default-density,
 ));
 @include mat.all-component-themes($custom-dark-theme);

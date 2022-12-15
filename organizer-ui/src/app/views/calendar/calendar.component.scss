@@ -1,0 +1,39 @@
+#calender-view-root {
+  margin: 10px;
+  width: calc(100% - 20px);
+  height: calc(100% - 20px);
+}
+
+#calendar-grid {
+  width: 100%;
+  height: 100%;
+
+  display: grid;
+  grid-template-areas:
+    'year-area month-area day-area';
+  grid-template-columns:
+    calc(33% - 50px) 34% calc(33% - 50px);
+
+  gap: 50px;
+}
+
+#month-grid-area {
+  grid-area: month-area;
+}
+
+#day-grid-area {
+  grid-area: day-area;
+}
+
+#year-grid-area {
+  grid-area: year-area;
+}
+
+.area-action-card {
+  margin-top: 10px;
+
+  button {
+    margin: 0 2.66%;
+    width: 28%;
+  }
+}
