@@ -10,7 +10,7 @@
 
   display: grid;
   grid-template-areas:
-    'picker-area item-area';
+    'picker-area panel-area';
   grid-template-columns:
     calc(70% - 10px) 30%;
 
@@ -21,19 +21,17 @@
   grid-area: picker-area;
 }
 
-#item-grid-area {
-  grid-area: item-area;
-}
+#panel-grid-area {
+  grid-area: panel-area;
 
-.item-actions {
-  button {
-    margin: 0 10px;
-    width: 5vw;
+  .panel-space {
+    height: 8px;
   }
-}
 
-.calendar-meta-data {
-  mat-form-field {
-    width: 216px;
+  .panel-card {
+    button {
+      margin: 0 2.66%;
+      width: 28%;
+    }
   }
 }

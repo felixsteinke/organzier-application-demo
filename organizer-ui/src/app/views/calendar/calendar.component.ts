@@ -19,7 +19,6 @@ export class CalendarComponent implements OnInit {
   building: string | undefined;
   nameC: string | undefined;
 
-
   selectedDate: Date = new Date();
 
   calendarType: CalendarType | undefined;
