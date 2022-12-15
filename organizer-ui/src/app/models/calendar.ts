@@ -7,8 +7,7 @@ export interface Calendar {
   name?: string; // 2022 DE BW Building 1
 
   year?: number; // 2022
-  days?: CalendarDay[];
-  extendedDays?: CalendarDay[]; // used for UI
+  days: CalendarDay[];
 }
 
 export interface CalendarDay {
