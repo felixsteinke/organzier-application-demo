@@ -1,22 +1,31 @@
 <div id="calender-view-root">
 
   <div id="calendar-grid">
-    <div id="picker-grid-area">
+    <div id="year-grid-area">
+      <app-calendar-select [(building)]="building" [(country)]="country" [(name)]="nameC" [(region)]="region"
+                           [(year)]="year" [id]="id"></app-calendar-select>
+      <mat-card class="area-action-card" fxLayout="row wrap" fxLayoutAlign="end center">
+        <button color="warn" mat-raised-button>
+          Delete
+        </button>
+        <button color="accent" mat-raised-button>
+          Edit
+        </button>
+        <button color="primary" mat-raised-button>
+          Save
+        </button>
+      </mat-card>
+    </div>
+
+    <div id="month-grid-area">
       <app-calendar-picker [year]="year"></app-calendar-picker>
     </div>
 
-    <div id="panel-grid-area">
-      <app-calendar-select [(building)]="building" [(country)]="country" [(name)]="nameC" [(region)]="region"
-                           [(year)]="year" [id]="id"></app-calendar-select>
-
-      <div class="panel-space"></div>
-
+    <div id="day-grid-area">
       <app-calendar-item [(calendarType)]="calendarType" [(dayType)]="dayType" [(description)]="description"
                          [(name)]="nameD" [date]="selectedDate"></app-calendar-item>
 
-      <div class="panel-space"></div>
-
-      <mat-card class="panel-card" fxLayout="row wrap" fxLayoutAlign="end center">
+      <mat-card class="area-action-card" fxLayout="row wrap" fxLayoutAlign="end center">
         <button color="warn" mat-raised-button>
           Delete
         </button>

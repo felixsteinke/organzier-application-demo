@@ -10,28 +10,30 @@
 
   display: grid;
   grid-template-areas:
-    'picker-area panel-area';
+    'year-area month-area day-area';
   grid-template-columns:
-    calc(70% - 10px) 30%;
+    calc(33% - 50px) 34% calc(33% - 50px);
 
-  gap: 10px;
+  gap: 50px;
 }
 
-#picker-grid-area {
-  grid-area: picker-area;
+#month-grid-area {
+  grid-area: month-area;
 }
 
-#panel-grid-area {
-  grid-area: panel-area;
+#day-grid-area {
+  grid-area: day-area;
+}
 
-  .panel-space {
-    height: 8px;
-  }
+#year-grid-area {
+  grid-area: year-area;
+}
 
-  .panel-card {
-    button {
-      margin: 0 2.66%;
-      width: 28%;
-    }
+.area-action-card {
+  margin-top: 10px;
+
+  button {
+    margin: 0 2.66%;
+    width: 28%;
   }
 }

@@ -1,32 +1,17 @@
 #calender-picker-root {
-  margin: 50px;
-  width: calc(100% - 100px);
-  height: calc(100% - 100px);
+
 }
 
-#calendar-picker-grid {
-  width: 100%;
-  height: 100%;
+#calendar-picker-data-card {
 
-  display: grid;
-  grid-template-areas:
-    'day-area month-area';
-  grid-template-columns:
-    calc(55% - 50px) 45%;
-
-  gap: 50px;
-}
-
-#day-grid-area {
-  grid-area: day-area;
-}
-
-#month-grid-area {
-  grid-area: month-area;
-
-  button {
+  .month-select-btn {
     margin: 10px;
     width: calc(100% - 20px);
     aspect-ratio: 1 / 1;
+  }
+
+  mat-calendar {
+    width: 100%;
+    max-width: 540px;
   }
 }

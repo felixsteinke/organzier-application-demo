@@ -1,78 +1,27 @@
-<div id="calender-picker-root">
-
-  <div id="calendar-picker-grid">
-    <mat-calendar [(selected)]="selected" [maxDate]="maxDate" [minDate]="minDate" id="day-grid-area">
-    </mat-calendar>
-
-    <table id="month-grid-area">
+<div fxLayout="column" fxLayoutAlign="start center" id="calender-picker-root">
+  <mat-card id="calendar-picker-data-card">
+    <table>
       <tr>
-        <td>
-          <button mat-stroked-button matBadge="0" matBadgeColor="accent" matBadgeSize="large">
-            JAN
-          </button>
-        </td>
-        <td>
-          <button mat-stroked-button matBadge="0" matBadgeColor="accent" matBadgeSize="large">
-            FEB
-          </button>
-        </td>
-        <td>
-          <button mat-stroked-button matBadge="0" matBadgeColor="accent" matBadgeSize="large">
-            MAR
-          </button>
-        </td>
-        <td>
-          <button mat-stroked-button matBadge="0" matBadgeColor="accent" matBadgeSize="large">
-            APR
+        <td *ngFor="let item of monthRow1; index as i;">
+          <button class="month-select-btn" mat-stroked-button matBadge="{{item.calendarDays}}" matBadgeColor="accent"
+                  matBadgeSize="medium">
+            {{item.name}}
           </button>
         </td>
       </tr>
       <tr>
-        <td>
-          <button mat-stroked-button matBadge="0" matBadgeColor="accent" matBadgeSize="large">
-            MAY
-          </button>
-        </td>
-        <td>
-          <button mat-stroked-button matBadge="0" matBadgeColor="accent" matBadgeSize="large">
-            JUN
-          </button>
-        </td>
-        <td>
-          <button mat-stroked-button matBadge="0" matBadgeColor="accent" matBadgeSize="large">
-            JUL
-          </button>
-        </td>
-        <td>
-          <button mat-stroked-button matBadge="0" matBadgeColor="accent" matBadgeSize="large">
-            AUG
-          </button>
-        </td>
-      </tr>
-      <tr>
-        <td>
-          <button mat-stroked-button matBadge="0" matBadgeColor="accent" matBadgeSize="large">
-            SEP
-          </button>
-        </td>
-        <td>
-          <button mat-stroked-button matBadge="0" matBadgeColor="accent" matBadgeSize="large">
-            OCT
-          </button>
-        </td>
-        <td>
-          <button mat-stroked-button matBadge="0" matBadgeColor="accent" matBadgeSize="large">
-            NOV
-          </button>
-        </td>
-        <td>
-          <button mat-stroked-button matBadge="0" matBadgeColor="accent" matBadgeSize="large">
-            DEC
+        <td *ngFor="let item of monthRow2; index as i;">
+          <button class="month-select-btn" mat-stroked-button matBadge="{{item.calendarDays}}" matBadgeColor="accent"
+                  matBadgeSize="medium">
+            {{item.name}}
           </button>
         </td>
       </tr>
     </table>
-  </div>
+
+    <mat-calendar [(selected)]="selected" [maxDate]="maxDate" [minDate]="minDate" class="data-form-cell">
+    </mat-calendar>
+  </mat-card>
 </div>
 
 
