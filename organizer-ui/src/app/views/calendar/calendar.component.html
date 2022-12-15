@@ -18,7 +18,8 @@
     </div>
 
     <div id="month-grid-area">
-      <app-calendar-picker [year]="year"></app-calendar-picker>
+      <app-calendar-picker (selectedDate)="onSelectedDate($event)" [calendarDays]="calendarDays"
+                           [year]="year"></app-calendar-picker>
     </div>
 
     <div id="day-grid-area">
@@ -29,7 +30,7 @@
         <button color="warn" mat-raised-button>
           Delete
         </button>
-        <button color="accent" mat-raised-button>
+        <button class="accent" color="accent" mat-raised-button>
           Edit
         </button>
         <button color="primary" mat-raised-button>

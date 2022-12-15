@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {Calendar, CalendarDayType} from "../../models/calendar";
+import {Calendar, CalendarDay, CalendarDayType} from "../../models/calendar";
 import {CalendarType} from "../../enums/calendar-type";
 
 
@@ -11,6 +11,13 @@ import {CalendarType} from "../../enums/calendar-type";
 export class CalendarComponent implements OnInit {
 
   calendar: Calendar | undefined;
+
+  calendarDays: CalendarDay[] = [
+    {
+      dayMonth: 10,
+      month: 3
+    }
+  ];
 
   id = 1;
   year: number | undefined = 2023;
@@ -30,5 +37,9 @@ export class CalendarComponent implements OnInit {
   }
 
   ngOnInit(): void {
+  }
+
+  public onSelectedDate(event: Date): void {
+    this.selectedDate = event;
   }
 }

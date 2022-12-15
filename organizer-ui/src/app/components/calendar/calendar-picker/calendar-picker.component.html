@@ -3,7 +3,9 @@
     <table>
       <tr>
         <td *ngFor="let item of monthRow1; index as i;">
-          <button class="month-select-btn" mat-stroked-button matBadge="{{item.calendarDays}}" matBadgeColor="accent"
+          <button (click)="clickMonth(item.month)" class="month-select-btn"
+                  mat-stroked-button matBadge="{{getCalendarDaysCount(item.month, calendarDays)}}"
+                  matBadgeColor="accent"
                   matBadgeSize="medium">
             {{item.name}}
           </button>
@@ -11,7 +13,9 @@
       </tr>
       <tr>
         <td *ngFor="let item of monthRow2; index as i;">
-          <button class="month-select-btn" mat-stroked-button matBadge="{{item.calendarDays}}" matBadgeColor="accent"
+          <button (click)="clickMonth(item.month)" class="month-select-btn"
+                  mat-stroked-button matBadge="{{getCalendarDaysCount(item.month, calendarDays)}}"
+                  matBadgeColor="accent"
                   matBadgeSize="medium">
             {{item.name}}
           </button>
@@ -19,7 +23,11 @@
       </tr>
     </table>
 
-    <mat-calendar [(selected)]="selected" [maxDate]="maxDate" [minDate]="minDate" class="data-form-cell">
+    <mat-calendar (selectedChange)="emitSelectedDate()"
+                  [(selected)]="selectedDate"
+                  [dateClass]="highlightDates()"
+                  [startAt]="viewDate"
+                  class="data-form-cell">
     </mat-calendar>
   </mat-card>
 </div>

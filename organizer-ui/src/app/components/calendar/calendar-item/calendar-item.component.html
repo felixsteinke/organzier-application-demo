@@ -1,6 +1,9 @@
 <div fxLayout="column" fxLayoutAlign="start center" id="calendar-item-root">
   <mat-card fxLayout="column" fxLayoutAlign="start start" id="calendar-item-data-form">
 
+    <mat-card-title *ngIf="!date && !dateRange">
+      No Date Selected
+    </mat-card-title>
     <mat-card-title *ngIf="date">
       {{getDayName(date)}}
     </mat-card-title>

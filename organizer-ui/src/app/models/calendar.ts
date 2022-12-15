@@ -12,6 +12,7 @@ export interface Calendar {
 }
 
 export interface CalendarDay {
+  month?: number; // 3
   dayMonth?: number; // 14
   name?: string; // Wednesday
   description?: string;
