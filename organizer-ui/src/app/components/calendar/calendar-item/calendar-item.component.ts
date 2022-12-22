@@ -1,6 +1,7 @@
 import {Component, EventEmitter, Input, Output} from '@angular/core';
 import {CalendarDayType, DateRange} from "../../../models/calendar";
 import {CalendarType} from "../../../enums/calendar-type";
+import {DataMockService} from "../../../services/data-mock.service";
 
 @Component({
   selector: 'app-calendar-item',
@@ -14,18 +15,7 @@ export class CalendarItemComponent {
     CalendarType.REGION,
     CalendarType.BUILDING,
   ];
-  dayTypeOptions: CalendarDayType[] = [
-    {
-      name: 'Holiday',
-      description: 'Great for everyone.',
-      isBilling: false
-    },
-    {
-      name: 'Optional Closing Day',
-      description: 'Not as great, but still good.',
-      isBilling: true
-    },
-  ];
+  dayTypeOptions: CalendarDayType[] = [];
 
   @Input() date: Date | undefined;
   @Input() dateRange: DateRange | undefined;
@@ -42,7 +32,11 @@ export class CalendarItemComponent {
   @Input() dayType: CalendarDayType | undefined = this.dayTypeOptions[0];
   @Output() dayTypeChange: EventEmitter<CalendarDayType> = new EventEmitter<CalendarDayType>();
 
-  constructor() {
+  constructor(private dataService: DataMockService) {
+    dataService.getDayTypes().subscribe({
+      next: value => this.dayTypeOptions = value,
+      error: err => console.error(err)
+    });
   }
 
   public emitCalendarType(): void {

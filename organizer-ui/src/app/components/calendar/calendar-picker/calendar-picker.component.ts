@@ -81,8 +81,8 @@ export class CalendarPickerComponent implements OnChanges, AfterViewInit {
 
   public highlightDates(): MatCalendarCellClassFunction<any> {
     const highlightedDates = this.calendarDays.map((cDay) => {
-      if (this.viewYear && cDay.month && cDay.dayMonth) {
-        return new Date(this.viewYear, cDay.month - 1, cDay.dayMonth);
+      if (this.viewYear && cDay.month && cDay.day) {
+        return new Date(this.viewYear, cDay.month - 1, cDay.day);
       } else {
         return undefined;
       }
