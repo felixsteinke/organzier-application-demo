@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import {Calendar, CalendarDay, CalendarDayType} from "../models/calendar";
-import {Observable, of, throwError} from "rxjs";
+import {delay, firstValueFrom, map, Observable, of} from "rxjs";
 
 @Injectable({
   providedIn: 'root'
@@ -17,16 +17,16 @@ export class DataMockService {
     return of(Array.from(this.dayTypeDB.values()));
   }
 
-  public getCalendarBy(id: number): Observable<Calendar> {
+  public getCalendarById(id: number): Observable<Calendar | undefined> {
     const calendar = this.calendarDB.get(id);
     if (calendar) {
-      return of(calendar);
+      return of(calendar).pipe(delay(1000));
     } else {
-      return throwError(() => new Error('ID not found!'));
+      return of(undefined);
     }
   }
 
-  public getCountryCalendar(): Observable<Calendar[]> {
+  public getRootCalendars(): Observable<Calendar[]> {
     let rootNodes: Calendar[] = [];
     this.calendarDB.forEach((value: Calendar) => {
       if (!value.parentId) {
@@ -36,16 +36,29 @@ export class DataMockService {
     return of(rootNodes);
   }
 
-  public getChildCalendarOf(parentId: number): Observable<Calendar[]> {
-    let childNotes: Calendar[] = [];
+  public isCalendarExpandable(calendarId: number | undefined): Promise<boolean> {
+    return firstValueFrom(this.getChildCalendarsOfParentId(calendarId).pipe(map(value => value !== undefined && value.length > 0)));
+  }
+
+  public getChildCalendarsOfParentId(parentId: number | undefined): Observable<Calendar[] | undefined> {
+    if (parentId === undefined) {
+      return of(undefined);
+    }
+    let childNodes: Calendar[] = [];
     this.calendarDB.forEach((value: Calendar) => {
       if (value.parentId === parentId) {
-        childNotes.push(value);
+        childNodes.push(value);
       }
     });
-    return of(childNotes);
+    if (childNodes.length > 0) {
+      return of(childNodes).pipe(delay(1000));
+    } else {
+      return of(undefined);
+    }
   }
 }
+
+// === MOCK DATA =======================================================================================================
 
 export const INIT_DayTypeDB: Map<number, CalendarDayType> = new Map([
   [1, {id: 1, name: 'Holiday', description: 'Great for everyone.', isBilling: false}],

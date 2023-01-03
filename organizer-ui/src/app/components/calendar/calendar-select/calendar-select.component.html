@@ -22,29 +22,23 @@
       <mat-icon matSuffix>search</mat-icon>
     </mat-form-field>
 
-    <!-- IDENTIFIER: CALENDAR COUNTRY -->
-    <mat-form-field appearance="outline">
-      <mat-label>Country</mat-label>
-      <input (change)="emitCountry()" [(ngModel)]="country" matInput>
-    </mat-form-field>
-
-    <!-- IDENTIFIER: CALENDAR REGION -->
-    <mat-form-field appearance="outline">
-      <mat-label>Region</mat-label>
-      <input (change)="emitRegion()" [(ngModel)]="region" matInput>
-    </mat-form-field>
-
-    <!-- IDENTIFIER: CALENDAR BUILDING -->
-    <mat-form-field appearance="outline">
-      <mat-label>Building</mat-label>
-      <input (change)="emitBuilding()" [(ngModel)]="building" matInput>
-    </mat-form-field>
-
-    <!-- DESCRIPTOR: CALENDAR NAME -->
-    <mat-form-field appearance="outline">
-      <mat-label>Calendar Name</mat-label>
-      <input (change)="emitName()" [(ngModel)]="name" matInput>
-    </mat-form-field>
+    <mat-tree [dataSource]="dataSource" [treeControl]="treeControl">
+      <mat-tree-node *matTreeNodeDef="let node" matTreeNodePadding>
+        <button disabled mat-icon-button></button>
+        {{node.item.name}}
+      </mat-tree-node>
+      <mat-tree-node *matTreeNodeDef="let node; when: hasChild" matTreeNodePadding>
+        <button [attr.aria-label]="'Toggle ' + node.item"
+                mat-icon-button matTreeNodeToggle>
+          <mat-icon class="mat-icon-rtl-mirror">
+            {{treeControl.isExpanded(node) ? 'expand_more' : 'chevron_right'}}
+          </mat-icon>
+        </button>
+        {{node.item.name}}
+        <mat-progress-spinner *ngIf="node.isLoading" [diameter]="30" class="node-loading-spinner"
+                              mode="indeterminate"></mat-progress-spinner>
+      </mat-tree-node>
+    </mat-tree>
 
   </mat-card>
 </div>
