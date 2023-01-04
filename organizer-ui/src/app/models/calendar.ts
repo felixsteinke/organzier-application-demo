@@ -12,12 +12,25 @@ export interface Calendar {
   days: CalendarDay[];
 }
 
-export interface CalendarDay {
-  month: number; // 3
-  day: number; // 14
-  name: string; // Wednesday
+export class CalendarDay {
+  month?: number; // 3
+  day?: number; // 14
+  name?: string; // Wednesday
   description?: string;
-  dayType: CalendarDayType;
+  dayType?: CalendarDayType;
+
+  public constructor(init?: Partial<CalendarDay>) {
+    Object.assign(this, init);
+  }
+
+  public setDate(date: Date): void {
+    this.month = date.getMonth() + 1;
+    this.day = date.getDate();
+  }
+
+  public isUndefined(): boolean {
+    return !this.month || !this.day;
+  }
 }
 
 export interface CalendarDayType {

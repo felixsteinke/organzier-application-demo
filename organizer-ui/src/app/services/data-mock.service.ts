@@ -67,102 +67,102 @@ export const INIT_DayTypeDB: Map<number, CalendarDayType> = new Map([
 
 
 const CountryDays: CalendarDay[] = [
-  {
+  new CalendarDay({
     name: 'eg. monday',
     month: 1, day: 1,
     description: 'e.g. Must be a good day!',
     dayType: INIT_DayTypeDB.get(1)!
-  },
-  {
+  }),
+  new CalendarDay({
     name: 'eg. monday',
     month: 2, day: 2,
     description: 'e.g. Must be a good day!',
     dayType: INIT_DayTypeDB.get(1)!
-  },
-  {
+  }),
+  new CalendarDay({
     name: 'eg. monday',
     month: 3, day: 3,
     description: 'e.g. Must be a good day!',
     dayType: INIT_DayTypeDB.get(1)!
-  },
-  {
+  }),
+  new CalendarDay({
     name: 'eg. monday',
     month: 4, day: 4,
     description: 'e.g. Must be a good day!',
     dayType: INIT_DayTypeDB.get(1)!
-  }
+  })
 ];
 
 const RegionDays: CalendarDay[] = [
-  {
+  new CalendarDay({
     name: 'eg. monday',
     month: 5, day: 5,
     description: 'e.g. Must be a good day!',
     dayType: INIT_DayTypeDB.get(1)!
-  },
-  {
+  }),
+  new CalendarDay({
     name: 'eg. monday',
     month: 6, day: 6,
     description: 'e.g. Must be a good day!',
     dayType: INIT_DayTypeDB.get(2)!
-  },
-  {
+  }),
+  new CalendarDay({
     name: 'eg. monday',
     month: 7, day: 7,
     description: 'e.g. Must be a good day!',
     dayType: INIT_DayTypeDB.get(1)!
-  },
-  {
+  }),
+  new CalendarDay({
     name: 'eg. monday',
     month: 8, day: 8,
     description: 'e.g. Must be a good day!',
     dayType: INIT_DayTypeDB.get(2)!
-  }
+  })
 ];
 
 const BuildingDays: CalendarDay[] = [
-  {
+  new CalendarDay({
     name: 'eg. monday',
     month: 9, day: 9,
     description: 'e.g. Must be a good day!',
     dayType: INIT_DayTypeDB.get(1)!
-  },
-  {
+  }),
+  new CalendarDay({
     name: 'eg. monday',
     month: 10, day: 10,
     description: 'e.g. Must be a good day!',
     dayType: INIT_DayTypeDB.get(2)!
-  },
-  {
+  }),
+  new CalendarDay({
     name: 'eg. monday',
     month: 11, day: 11,
     description: 'e.g. Must be a good day!',
     dayType: INIT_DayTypeDB.get(1)!
-  },
-  {
+  }),
+  new CalendarDay({
     name: 'eg. monday',
     month: 11, day: 12,
     description: 'e.g. Must be a good day!',
     dayType: INIT_DayTypeDB.get(2)!
-  },
-  {
+  }),
+  new CalendarDay({
     name: 'eg. monday',
     month: 12, day: 11,
     description: 'e.g. Must be a good day!',
     dayType: INIT_DayTypeDB.get(1)!
-  },
-  {
+  }),
+  new CalendarDay({
     name: 'eg. monday',
     month: 12, day: 12,
     description: 'e.g. Must be a good day!',
     dayType: INIT_DayTypeDB.get(2)!
-  },
-  {
+  }),
+  new CalendarDay({
     name: 'eg. monday',
     month: 12, day: 31,
     description: 'Finally its over!!',
     dayType: INIT_DayTypeDB.get(1)!
-  }
+  })
 ];
 
 const INIT_CalendarDB: Map<number, Calendar> = new Map([

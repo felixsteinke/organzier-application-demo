@@ -34,22 +34,8 @@ export class CalendarSelectComponent implements OnInit, OnChanges {
 
   yearPicker = new FormControl();
 
-  @Input() id: number | undefined;
-
   @Input() year: number | undefined;
   @Output() yearChange: EventEmitter<number> = new EventEmitter<number>();
-
-  @Input() country: string | undefined;
-  @Output() countryChange: EventEmitter<string> = new EventEmitter<string>();
-
-  @Input() region: string | undefined;
-  @Output() regionChange: EventEmitter<string> = new EventEmitter<string>();
-
-  @Input() building: string | undefined;
-  @Output() buildingChange: EventEmitter<string> = new EventEmitter<string>();
-
-  @Input() name: string | undefined;
-  @Output() nameChange: EventEmitter<string> = new EventEmitter<string>();
 
   treeControl: FlatTreeControl<DynamicFlatNode>;
   dataSource: DynamicDataSource;
