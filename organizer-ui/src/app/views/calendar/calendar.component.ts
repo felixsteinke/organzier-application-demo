@@ -1,6 +1,7 @@
-import {Component, OnInit} from '@angular/core';
+import {Component} from '@angular/core';
 import {Calendar, CalendarDay} from "../../models/calendar";
-import {CalendarType} from "../../enums/calendar-type";
+import {DataMockService} from "../../services/data-mock.service";
+import {DynamicFlatNode} from "../../components/calendar/calendar-select/dynamic-tree-data-source";
 
 
 @Component({
@@ -8,187 +9,79 @@ import {CalendarType} from "../../enums/calendar-type";
   templateUrl: './calendar.component.html',
   styleUrls: ['./calendar.component.scss']
 })
-export class CalendarComponent implements OnInit {
+export class CalendarComponent {
 
-  calendarDB: Calendar[] = INIT_DB;
+  year: number = new Date().getFullYear();
+  calendars: Map<number, Calendar> = new Map();
+  selectedDate: Date | undefined = new Date();
+  calendarItemEnabled = false;
+  calendarItemType: CalendarType = CalendarType.NONE;
+  calendarItemDay: CalendarDay = new CalendarDay();
 
-  calendar: Calendar = this.calendarDB[0];
-  calendarType: CalendarType | undefined = this.getCalendarType(this.calendar.locale, this.calendar.region, this.calendar.building);
-
-  selectedDate: Date = new Date();
-  calendarDay: CalendarDay = {};
-
-  constructor() {
+  calendarDays(): CalendarDay [] {
+    let days: CalendarDay[] = [];
+    this.calendars.forEach((calendar) => days = [...calendar.days])
+    return days;
   }
 
-  ngOnInit(): void {
+  constructor(private dataService: DataMockService) {
+  }
+
+  public transformCalendarTitle(calendars: Map<number, Calendar>): string {
+    const sortedArray = [...calendars].sort(([key1, value1], [key2, value2]) => key1 - key2);
+    let title: string = '';
+    for (let i = 0; i < sortedArray.length; i++) {
+      title += sortedArray[i][1].name;
+      if (i < sortedArray.length - 1) {
+        title += ' > '
+      }
+    }
+    return title;
   }
 
   public onSelectedDate(event: Date): void {
     this.selectedDate = event;
-    const existingDay = this.filterCalendarDays(event);
-    this.calendarDay = existingDay ? existingDay : {};
+    this.updateCalendarItemData(event);
   }
 
-  private filterCalendarDays(date: Date): CalendarDay | undefined {
-    return this.calendar.days.find(cDay => cDay.month === date.getMonth() + 1 && cDay.dayMonth === date.getDate());
-  }
-
-  private getCalendarType(c1: string | undefined, c2: string | undefined, c3: string | undefined): CalendarType | undefined {
-    if (c3) {
-      return CalendarType.BUILDING;
-    } else if (c2) {
-      return CalendarType.REGION;
-    } else if (c1) {
-      return CalendarType.COUNTRY;
-    } else {
-      return undefined;
+  public onNewDay(): void {
+    if (this.selectedDate && this.calendars) {
+      this.calendars.forEach((calendar, level) => {
+        if (level > this.calendarItemType) {
+          this.calendarItemType = level;
+        }
+      });
+      this.calendarItemDay = new CalendarDay();
+      this.calendarItemDay.setDate(this.selectedDate);
+      this.calendarItemEnabled = true;
     }
+  }
+
+  private onCalendarSelect(calendarNodes: DynamicFlatNode[]): void {
+    this.calendars.clear();
+    for (let i = 0; i < calendarNodes.length; i++) {
+      this.calendars.set(calendarNodes[i].level, calendarNodes[i].item);
+    }
+  }
+
+  private updateCalendarItemData(date: Date): void {
+    this.calendarItemEnabled = false;
+    this.calendars.forEach((calendar, level) => {
+      const day = calendar.days.find(cDay => cDay.month === date.getMonth() + 1 && cDay.day === date.getDate());
+      if (day) {
+        this.calendarItemType = level;
+        this.calendarItemDay = day;
+        return;
+      }
+    });
+    this.calendarItemType = CalendarType.NONE;
+    this.calendarItemDay = new CalendarDay();
   }
 }
 
-const INIT_DB: Calendar[] = [
-  {
-    id: 1,
-    locale: 'DE', region: 'BW', building: 'HFT 1',
-    name: 'HFT Calendar 2025 (Default)',
-    year: 2025,
-    days: [
-      {
-        month: 1, dayMonth: 1,
-        description: 'Must be a good day!',
-        dayType: {
-          name: 'Holiday',
-          description: 'Great for everyone.',
-          isBilling: false
-        }
-      },
-      {
-        month: 2, dayMonth: 2,
-        description: 'Must be a good day!',
-        dayType: {
-          name: 'Holiday',
-          description: 'Great for everyone.',
-          isBilling: false
-        }
-      },
-      {
-        month: 3, dayMonth: 3,
-        description: 'Must be a good day!',
-        dayType: {
-          name: 'Holiday',
-          description: 'Great for everyone.',
-          isBilling: false
-        }
-      },
-      {
-        month: 4, dayMonth: 4,
-        description: 'Must be a good day!',
-        dayType: {
-          name: 'Holiday',
-          description: 'Great for everyone.',
-          isBilling: false
-        }
-      },
-      {
-        month: 5, dayMonth: 5,
-        description: 'Must be a good day!',
-        dayType: {
-          name: 'Holiday',
-          description: 'Great for everyone.',
-          isBilling: false
-        }
-      },
-      {
-        month: 6, dayMonth: 6,
-        description: 'Must be a good day!',
-        dayType: {
-          name: 'Holiday',
-          description: 'Great for everyone.',
-          isBilling: false
-        }
-      },
-      {
-        month: 7, dayMonth: 7,
-        description: 'Must be a good day!',
-        dayType: {
-          name: 'Holiday',
-          description: 'Great for everyone.',
-          isBilling: false
-        }
-      },
-      {
-        month: 8, dayMonth: 8,
-        description: 'Must be a good day!',
-        dayType: {
-          name: 'Holiday',
-          description: 'Great for everyone.',
-          isBilling: false
-        }
-      },
-      {
-        month: 9, dayMonth: 9,
-        description: 'Must be a good day!',
-        dayType: {
-          name: 'Holiday',
-          description: 'Great for everyone.',
-          isBilling: false
-        }
-      },
-      {
-        month: 10, dayMonth: 10,
-        description: 'Must be a good day!',
-        dayType: {
-          name: 'Holiday',
-          description: 'Great for everyone.',
-          isBilling: false
-        }
-      },
-      {
-        month: 11, dayMonth: 11,
-        description: 'Must be a good day!',
-        dayType: {
-          name: 'Holiday',
-          description: 'Great for everyone.',
-          isBilling: false
-        }
-      },
-      {
-        month: 11, dayMonth: 12,
-        description: 'Must be a good day!',
-        dayType: {
-          name: 'Holiday',
-          description: 'Great for everyone.',
-          isBilling: false
-        }
-      },
-      {
-        month: 12, dayMonth: 11,
-        description: 'Must be a good day!',
-        dayType: {
-          name: 'Holiday',
-          description: 'Great for everyone.',
-          isBilling: false
-        }
-      },
-      {
-        month: 12, dayMonth: 12,
-        description: 'Must be a good day!',
-        dayType: {
-          name: 'Holiday',
-          description: 'Great for everyone.',
-          isBilling: false
-        }
-      },
-      {
-        month: 12, dayMonth: 31,
-        description: 'Finally its over!!',
-        dayType: {
-          name: 'Holiday',
-          description: 'Great for everyone.',
-          isBilling: false
-        }
-      }
-    ]
-  }
-];
+export enum CalendarType {
+  NONE,
+  COUNTRY,
+  REGION,
+  BUILDING
+}

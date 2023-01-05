@@ -5,6 +5,9 @@ import {FormControl} from "@angular/forms";
 import * as moment from "moment/moment";
 import {Moment} from "moment/moment";
 import {MatDatepicker} from "@angular/material/datepicker";
+import {FlatTreeControl} from "@angular/cdk/tree";
+import {DataMockService} from "../../../services/data-mock.service";
+import {DynamicDataSource, DynamicFlatNode} from "./dynamic-tree-data-source";
 
 const YEAR_PICKER_FORMATS = {
   parse: {
@@ -31,25 +34,25 @@ export class CalendarSelectComponent implements OnInit, OnChanges {
 
   yearPicker = new FormControl();
 
-  @Input() id: number | undefined;
-
   @Input() year: number | undefined;
   @Output() yearChange: EventEmitter<number> = new EventEmitter<number>();
 
-  @Input() country: string | undefined;
-  @Output() countryChange: EventEmitter<string> = new EventEmitter<string>();
+  treeControl: FlatTreeControl<DynamicFlatNode>;
+  dataSource: DynamicDataSource;
 
-  @Input() region: string | undefined;
-  @Output() regionChange: EventEmitter<string> = new EventEmitter<string>();
-
-  @Input() building: string | undefined;
-  @Output() buildingChange: EventEmitter<string> = new EventEmitter<string>();
-
-  @Input() name: string | undefined;
-  @Output() nameChange: EventEmitter<string> = new EventEmitter<string>();
-
-  constructor() {
+  constructor(dataService: DataMockService) {
+    this.treeControl = new FlatTreeControl<DynamicFlatNode>(
+      (node: DynamicFlatNode) => node.level,
+      (node: DynamicFlatNode) => node.expandable
+    );
+    this.dataSource = new DynamicDataSource(this.treeControl, dataService);
+    dataService.getRootCalendars().subscribe({
+      // TODO do not set all to expandable!
+      next: value => this.dataSource.data = value.map(calendar => new DynamicFlatNode(calendar, 0, true))
+    })
   }
+
+  hasChild = (_: number, _nodeData: DynamicFlatNode) => _nodeData.expandable;
 
   ngOnInit(): void {
     this.updateYearPickerValue();
@@ -57,22 +60,6 @@ export class CalendarSelectComponent implements OnInit, OnChanges {
 
   ngOnChanges(changes: SimpleChanges): void {
     this.updateYearPickerValue();
-  }
-
-  public emitCountry(): void {
-    this.countryChange.emit(this.country);
-  }
-
-  public emitRegion(): void {
-    this.regionChange.emit(this.region);
-  }
-
-  public emitBuilding(): void {
-    this.buildingChange.emit(this.building);
-  }
-
-  public emitName(): void {
-    this.nameChange.emit(this.name);
   }
 
   public emitYearValue(normalizedYear: Moment, datepicker: MatDatepicker<any>): void {

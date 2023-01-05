@@ -1,41 +1,55 @@
 <div fxLayout="column" fxLayoutAlign="start center" id="calendar-item-root">
   <mat-card fxLayout="column" fxLayoutAlign="start start" id="calendar-item-data-form">
 
-    <mat-card-title *ngIf="!date && !dateRange">
-      No Date Selected
-    </mat-card-title>
-    <mat-card-title *ngIf="date">
-      {{getDayName(date)}}
-    </mat-card-title>
-    <mat-card-title *ngIf="dateRange">
-      {{getDayName(dateRange.start)}}to {{getDayName(dateRange.end)}}
+    <mat-card-title>
+      {{calendarDay && !calendarDay.isUndefined() ?
+      (calendarDay.day + '.' + calendarDay.month) :
+      (date ? transformDateTitle(date) : 'No Date Selected')}}
     </mat-card-title>
 
     <mat-form-field appearance="outline">
       <mat-label>Calendar Type</mat-label>
-      <mat-select (change)="emitCalendarType()" [(ngModel)]="calendarType">
-        <mat-option *ngFor="let cType of calendarTypeOptions" [value]="cType">
+      <mat-select (change)="emitCalendarType()"
+                  [(ngModel)]="calendarType"
+                  [disabled]="!enabled">
+        <mat-option *ngFor="let cType of calendarTypeOptions"
+                    [value]="cType">
           {{cType}}
         </mat-option>
       </mat-select>
     </mat-form-field>
 
-    <mat-form-field appearance="outline">
+    <mat-card-content *ngIf="!calendarDay">Calendar Day is undefined.</mat-card-content>
+
+    <mat-form-field *ngIf="calendarDay" appearance="outline">
       <mat-label>Name</mat-label>
-      <input (change)="emitName()" [(ngModel)]="name" matInput>
+      <input (change)="emitCalendarDay()"
+             [(ngModel)]="calendarDay.name"
+             [disabled]="!enabled"
+             [placeholder]="date ? getDayName(date) : ''"
+             matInput>
     </mat-form-field>
 
-    <mat-form-field appearance="outline">
+    <mat-form-field *ngIf="calendarDay" appearance="outline">
       <mat-label>Description</mat-label>
-      <textarea (change)="emitDescription()" [(ngModel)]="description" matInput rows="3"></textarea>
+      <textarea (change)="emitCalendarDay()"
+                [(ngModel)]="calendarDay.description"
+                [disabled]="!enabled"
+                matInput
+                rows="3">
+      </textarea>
     </mat-form-field>
 
-    <mat-form-field appearance="outline">
+    <mat-form-field *ngIf="calendarDay" appearance="outline">
       <mat-label>Day Type</mat-label>
-      <mat-select (change)="emitDayType()" [(ngModel)]="dayType">
-        <mat-option *ngFor="let dType of dayTypeOptions" [value]="dType"
+      <mat-select (change)="emitCalendarDay()"
+                  [(ngModel)]="calendarDay.dayType"
+                  [disabled]="!enabled">
+        <mat-option *ngFor="let dType of dayTypeOptions"
+                    [value]="dType"
                     matTooltip="{{dType.isBilling ? 'Billable' : 'Not Billable'}}"
-                    matTooltipPosition="left" matTooltipShowDelay="500">
+                    matTooltipPosition="left"
+                    matTooltipShowDelay="500">
           {{dType.name}}
         </mat-option>
       </mat-select>

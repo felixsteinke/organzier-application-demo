@@ -81,8 +81,8 @@ export class CalendarPickerComponent implements OnChanges, AfterViewInit {
 
   public highlightDates(): MatCalendarCellClassFunction<any> {
     const highlightedDates = this.calendarDays.map((cDay) => {
-      if (this.viewYear && cDay.month && cDay.dayMonth) {
-        return new Date(this.viewYear, cDay.month - 1, cDay.dayMonth);
+      if (this.viewYear && cDay.month && cDay.day) {
+        return new Date(this.viewYear, cDay.month - 1, cDay.day);
       } else {
         return undefined;
       }
@@ -90,8 +90,7 @@ export class CalendarPickerComponent implements OnChanges, AfterViewInit {
     return (date: Date): MatCalendarCellCssClasses => {
       const highlightDate = highlightedDates
         .some((d) => d !== undefined && d.getDate() === date.getDate() && d.getMonth() === date.getMonth() && d.getFullYear() === date.getFullYear());
-      if (highlightDate)
-        console.log(date + ' sollte rot sein')
+      // if (highlightDate) console.log(date + ' sollte rot sein')
       return highlightDate ? 'highlight-calendar-date' : '';
     };
   }
@@ -111,7 +110,7 @@ export class CalendarPickerComponent implements OnChanges, AfterViewInit {
       this.calendar.minDate = this.viewYear ? new Date(this.viewYear, 0, 1) : null;
       this.calendar.maxDate = this.viewYear ? new Date(this.viewYear, 11, 31) : null;
     }
-    console.log(this.calendar);
+    // console.log(this.calendar);
   }
 
   private getViewDate(): Date {

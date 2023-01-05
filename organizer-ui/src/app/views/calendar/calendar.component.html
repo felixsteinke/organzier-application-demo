@@ -2,40 +2,59 @@
 
   <div id="calendar-grid">
     <div id="year-grid-area">
-      <app-calendar-select [(building)]="calendar.building" [(country)]="calendar.locale" [(name)]="calendar.name"
-                           [(region)]="calendar.region" [(year)]="calendar.year"
-                           [id]="calendar.id"></app-calendar-select>
-      <mat-card class="area-action-card" fxLayout="row wrap" fxLayoutAlign="end center">
-        <button color="warn" mat-raised-button>
-          Delete
-        </button>
-        <button color="accent" mat-raised-button>
-          Edit
-        </button>
-        <button color="primary" mat-raised-button>
-          Save
-        </button>
-      </mat-card>
+      <app-calendar-select [(year)]="year">
+      </app-calendar-select>
     </div>
 
     <div id="month-grid-area">
-      <app-calendar-picker (selectedDate)="onSelectedDate($event)" [calendarDays]="calendar.days"
-                           [year]="calendar.year"></app-calendar-picker>
+      <mat-card>
+        <mat-card-title>
+          {{this.calendars.size > 0 ? transformCalendarTitle(this.calendars) : 'No calendar selected.'}}
+        </mat-card-title>
+        <!--        <button color="primary" mat-raised-button>-->
+        <!--          Clone Calendar-->
+        <!--        </button>-->
+        <!--        <button color="primary" mat-raised-button>-->
+        <!--          New Calendar-->
+        <!--        </button>-->
+        <!--        <button color="warn" mat-raised-button>-->
+        <!--          Delete Calendar-->
+        <!--        </button>-->
+      </mat-card>
+      <app-calendar-picker (selectedDate)="onSelectedDate($event)" [calendarDays]="calendarDays()" [year]="year">
+      </app-calendar-picker>
     </div>
 
     <div id="day-grid-area">
-      <app-calendar-item [(calendarType)]="calendarType" [(dayType)]="calendarDay.dayType"
-                         [(description)]="calendarDay.description"
-                         [(name)]="calendarDay.name" [date]="selectedDate"></app-calendar-item>
+      <app-calendar-item [(calendarDay)]="calendarItemDay"
+                         [(calendarType)]="calendarItemType"
+                         [date]="selectedDate"
+                         [enabled]="calendarItemEnabled">
+      </app-calendar-item>
 
       <mat-card class="area-action-card" fxLayout="row wrap" fxLayoutAlign="end center">
-        <button color="warn" mat-raised-button>
-          Delete
+        <button (click)="onNewDay()"
+                *ngIf="calendarItemDay.isUndefined"
+                [disabled]="!selectedDate"
+                color="primary"
+                mat-raised-button>
+          New Day
         </button>
-        <button class="accent" color="accent" mat-raised-button>
+        <button (click)="calendarItemEnabled = !calendarItemEnabled"
+                *ngIf="!calendarItemDay.isUndefined"
+                class="accent"
+                color="accent"
+                mat-raised-button>
           Edit
         </button>
-        <button color="primary" mat-raised-button>
+        <button *ngIf="!calendarItemDay.isUndefined && calendarItemEnabled"
+                color="warn"
+                mat-raised-button>
+          Delete
+        </button>
+        <button *ngIf="!calendarItemDay.isUndefined && calendarItemEnabled"
+                color="primary"
+                mat-raised-button>
           Save
         </button>
       </mat-card>

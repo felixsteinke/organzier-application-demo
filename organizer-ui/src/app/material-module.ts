@@ -34,6 +34,7 @@ import {ReactiveFormsModule} from '@angular/forms';
 import {MatBadgeModule} from "@angular/material/badge";
 import {MatSliderModule} from "@angular/material/slider";
 import {MatNativeDateModule} from "@angular/material/core";
+import {MatTreeModule} from "@angular/material/tree";
 
 /**
  * File to import all available Material Modules.
@@ -75,7 +76,8 @@ import {MatNativeDateModule} from "@angular/material/core";
     ReactiveFormsModule,
     MatBadgeModule,
     MatSliderModule,
-    MatNativeDateModule
+    MatNativeDateModule,
+    MatTreeModule
   ]
 })
 export class MaterialModule {
